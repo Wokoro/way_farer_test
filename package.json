@@ -1,0 +1,71 @@
+{
+  "name": "way_farer",
+  "version": "1.0.0",
+  "description": "WayFarer is a public bus transportation booking API, that would be used to power front-end apps.",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel-node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --fix *"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Wokoro/way_farer.git"
+  },
+  "keywords": [
+    "Wayfarer",
+    "Server",
+    "Front-end"
+  ],
+  "author": "wokorosamuel@yahoo.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Wokoro/way_farer/issues"
+  },
+  "homepage": "https://github.com/Wokoro/way_farer#readme",
+  "engines": {
+    "node": "10"
+  },
+  "nyc": {
+    "require": [
+      "@babel/register"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ],
+    "sourceMap": false,
+    "instrument": false
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.18.0"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/node": "^7.4.5",
+    "@babel/polyfill": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/register": "^7.4.4",
+    "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "coveralls": "^3.0.4",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "mocha": "^6.1.4",
+    "nodemon": "^1.19.1",
+    "nyc": "^14.1.1",
+    "pm2": "^3.5.1",
+    "redis": "^2.8.0",
+    "sinon": "^7.3.2",
+    "supertest": "^4.0.2",
+    "swagger-jsdoc": "^3.2.9",
+    "swagger-ui-express": "^4.0.6",
+    "winston": "^3.2.1"
+  }
+}

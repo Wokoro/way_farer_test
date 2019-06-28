@@ -1,0 +1,20 @@
+---
+plugins:
+  duplication:
+    enabled: true
+    checks:
+      Similar code:
+        enabled: true
+    config:
+      languages:
+      - javascript
+  fixme:
+    enabled: true
+exclude_patterns:
+- dist/**/*
+- config/
+- db/
+- dist/
+- test/
+- node_modules/
+- client/
