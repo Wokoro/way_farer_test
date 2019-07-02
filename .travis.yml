@@ -5,8 +5,6 @@ services:
   - postgresql
 addons:
   postgresql: "9.6"
-env:
-  secure: gdUpe6z+uf3a5K93X26iVbccLLFTvGl/YDXD5IUXBeij6fR0jyysSYhlNjaH8Hn+4hHksOzmGHHcECNafRloukJkOeXtwEey5TLPxdMKdDnWbjLeUGmIegEUxQg9fcLES0XuZf74om8aWLsqOXiyO9c2QXztv6LzwxykLloKJ0cNaMKI000dE6XDMnPF5y1Jo3k9xLvLdeFgsq0DSy9IYm6CtoxL4znoGi9fTUYto+zHcWxZ0egeSfZ1NmcwCiYTO/iONE0FOCychHdubTb/g18uMEnvk/r9Mi+Cj4pxhrigVpUm8XhkWi1FJLEw+R5/w5NiuQmiAw2qCu7vNezaJv0PkNFsfFKe87KIcUneIug4JL7EbDVHTDGD5u4GBLHGDMIwxLBltq43IoFfUABCeKVr7lHw/Xj8Ahav+wkWyJ1Ve61kNm+IrIBQ36gXTub1hiTnCC/zpxgoqvMM8P82AAso3yVgqq/YnP3OvBgUczi/OlbvSZgZ385mUe70iu0ZWcETyer6+/E7AYxhBrsjor/8qWAQKqdgTZ53My5A3azL9VPtfIreAX67GO4BofvbqHSsTwGjyrLl3Xr/Y0/pePlr5YpT9iSk/6TmhOH0JmEw5waJltygyXj7TTMBeSEdxA5LRwIPPS15UMEd9nzOnzkjbXMLSSVK3wPGjdiuN44=
 cache:
   directories:
   - node_modules
@@ -14,12 +12,14 @@ notifications:
   email: false
 install:
   - npm install
-before_script:
-  - psql -c 'create database test;' -U postgres
-  - npm run buildtable
 script:
   - npm run test
 after_success:
   - npm run coveralls
   - npm install codeclimate-test-reporter
   - codeclimate-test-reporter < coverage/lcov.info
+deploy:
+  provider: heroku
+  api_key: 759e2259-6ed8-413b-86d7-9122e01dc383
+  app:
+    develop: wayfarertest
