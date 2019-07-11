@@ -1,17 +1,19 @@
 import logger from '../../utils/logger';
 import { 
-  userInputValidations,
+  userSignupInputValidations,
+  userSigninInputValidations,
   checkErrors,
+  checkUserExistence,
   checkUniqueness 
 } from './validator';
-import { signup } from './controller';
+import { signup, signin } from './controller';
 
 export default [
   {
     path: '/api/v1/auth/signup',
     handlers: [
       logger,
-      ...userInputValidations,
+      ...userSignupInputValidations,
       checkErrors,
       checkUniqueness,
       signup
@@ -19,8 +21,13 @@ export default [
     method: 'post',
   },
   {
-    path: '/auth/signin',
-    handlers: [],
+    path: '/api/v1/auth/signin',
+    handlers: [
+      ...userSigninInputValidations, 
+      checkErrors, 
+      checkUserExistence,
+      signin
+    ],
     method: 'post'
   },
   {

@@ -1,10 +1,11 @@
 import { check, validationResult } from 'express-validator';
+import bcrypt from 'bcrypt';
 import User from './model';
 
 /**
- * An array that holds all user input validations
+ * An array that holds all user signup input validations
  */
-export const userInputValidations = [
+export const userSignupInputValidations = [
   check('first_name', 'Firstname must atleast be three characters')
     .isString()
     .not().isEmpty()
@@ -58,6 +59,25 @@ export const userInputValidations = [
 ];
 
 /**
+ * An array that holds all user signup iput validations
+ */
+export const userSigninInputValidations = [
+
+  check('email', 'Invalid email value')
+    .isEmail()
+    .normalizeEmail()
+    .exists(),
+
+  check(
+    'password',
+    'Invalid password, password must be atleast five characters'
+  )
+    .isString()
+    .isLength({ min: 5 })
+    .exists()
+];
+
+/**
  * A function to return all express validator errors
  * @param {*} req 
  * @param {*} res 
@@ -71,7 +91,7 @@ export const checkErrors = (req, res, next) => {
     errorsHolder.push(error.msg);
   }
   if (!errors.isEmpty()) {
-    return res.status(400).send({ status: 'Error', errors: errorsHolder });
+    return res.status(400).json({ status: 'Error', errors: errorsHolder });
   }
   next();
 };
@@ -87,7 +107,7 @@ export const checkUniqueness = async ({ body }, res, next) => {
   const { email } = body;
   const result = await User.getUser('email', email);
   if (result.length > 0) {
-    return res.status(400).send({
+    return res.status(400).json({
       status: 'Error',
       errors: 'User already exists'
     });
@@ -95,8 +115,33 @@ export const checkUniqueness = async ({ body }, res, next) => {
   next();
 };
 
-export default {
-  userInputValidations,
-  checkErrors,
-  checkUniqueness
+/**
+ * Function to check if the user already exists on database
+ * @param {*} param0 
+ * @param {*} res 
+ * @param {*} next 
+ * @returns {Void} returns nothing
+ */
+export const checkUserExistence = async ({ body }, res, next) => {
+  const { email, password: rawPassword } = body;
+  const result = await User.getUser('email', email);
+ 
+  if (result.length > 0) {
+    const { password: hashPassword } = result[0];
+    const userPassword = result
+      ? bcrypt.compareSync(rawPassword, hashPassword)
+      : false;
+    if (!userPassword) {
+      return res.status(400).json({
+        status: 'Error',
+        errors: 'Wrong username or password'
+      });
+    }
+    [res.body] = result;
+    return next();
+  }
+  return res.status(400).json({
+    status: 'Error',
+    errors: 'Wrong username or password'
+  });
 };

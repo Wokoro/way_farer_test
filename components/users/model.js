@@ -57,7 +57,9 @@ const User = {
   },
   
   getUser: async (column, value) => {
-    const query = `SELECT * FROM users WHERE ${column} = $1`;
+    const query = `SELECT 
+    user_id, is_admin, password, token FROM users 
+    WHERE ${column} = $1`;
     const { rows } = await db.query(query, [value]);
     return rows;
   }
