@@ -11,10 +11,14 @@
     "setupdb": "babel-node database/setupDB.js",
     "dropdb": "cross-env NODE_ENV=develop babel-node database/dropDB.js",
     "seedDb": "babel-node database/seedDB.js",
-    "coveralls": "cat ./coverage/lcov.info | coveralls"
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "remarkConfig": {
-    "plugins": ["remark-preset-lint-recommended"]
+    "plugins": [
+      "remark-preset-lint-recommended"
+    ]
   },
   "repository": {
     "type": "git",
@@ -85,6 +89,8 @@
     "remark-preset-lint-recommended": "^3.0.3",
     "swagger-jsdoc": "^3.2.9",
     "swagger-ui-express": "^4.0.6",
-    "winston": "^3.2.1"
-  }
+    "winston": "^3.2.1",
+    "snyk": "^1.192.6"
+  },
+  "snyk": true
 }
