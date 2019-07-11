@@ -11,10 +11,10 @@ plugins:
   fixme:
     enabled: true
 exclude_patterns:
-- dist/**/*
-- config/
-- db/
-- dist/
+- doc/
+- coverage/
+- .nyc_output/
 - test/
 - node_modules/
 - client/
+...

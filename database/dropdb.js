@@ -1,0 +1,3 @@
+import { dropTables } from '.';
+
+dropTables();
