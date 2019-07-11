@@ -5,12 +5,17 @@ export default {
     version: 'v1.0',
     description: 'Documentation for Way_farer API'
   },
-  host: 'localhost:3000',
-  basePath: '',
-  schemes: ['http', 'https'],
+  securityDefinitions: {
+    bearerAuth: {
+      type: 'apiKey',
+      name: 'Authorization',
+      scheme: 'bearer',
+      in: 'header'
+    }
+  },
   produces: ['application/json'],
   paths: {
-    '/auth/signup': {
+    '/api/v1/auth/signup': {
       post: {
         tags: ['Signup'],
         consumes: [

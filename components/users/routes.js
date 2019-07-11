@@ -8,12 +8,12 @@ import { signup } from './controller';
 
 export default [
   {
-    path: '/auth/signup',
+    path: '/api/v1/auth/signup',
     handlers: [
       logger,
       ...userInputValidations,
-      checkErrors, 
-      checkUniqueness, 
+      checkErrors,
+      checkUniqueness,
       signup
     ],
     method: 'post',

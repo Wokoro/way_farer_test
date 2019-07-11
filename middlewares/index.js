@@ -3,7 +3,7 @@ import swaggerHandler from './documentation';
 
 export default [
   bodyParserHandler, 
-  compressionHandler, 
+  compressionHandler,
   corsHandler, 
   swaggerHandler
 ];

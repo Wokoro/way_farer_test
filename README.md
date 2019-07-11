@@ -1,9 +1,9 @@
-[![Build Status](https://travis-ci.com/Wokoro/way_farer_test.svg?branch=ft-user-signup-166986542)](https://travis-ci.com/Wokoro/way_farer_test)
+[![Build Status](https://travis-ci.com/Wokoro/way_farer_test.svg?branch=develop)](https://travis-ci.com/Wokoro/way_farer_test)
 [![Maintainability](https://api.codeclimate.com/v1/badges/238553b25e94ef730b2e/maintainability)](https://codeclimate.com/github/Wokoro/way_farer_test/maintainability)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/5e0e7fbf880f4945b71bd0e6ee42aa68)](https://www.codacy.com/app/Wokoro/way_farer_test?utm_source=github.com&utm_medium=referral&utm_content=Wokoro/way_farer_test&utm_campaign=Badge_Grade)
-[![Coverage Status](https://coveralls.io/repos/github/Wokoro/way_farer_test/badge.svg?branch=ft-user-signup-166986542)](https://coveralls.io/github/Wokoro/way_farer_test?branch=ft-user-signup-166986542)
+[![Coverage Status](https://coveralls.io/repos/github/Wokoro/way_farer_test/badge.svg?branch=develop)](https://coveralls.io/github/Wokoro/way_farer_test?branch=ft-user-signup-166986542)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/238553b25e94ef730b2e/test_coverage)](https://codeclimate.com/github/Wokoro/way_farer_test/test_coverage)
-[![Known Vulnerabilities](https://snyk.io/test/github/Wokoro/way_farer_test/ft-user-signup-166986542/badge.svg)](https://snyk.io/test/github/Wokoro/way_farer_test/ft-user-signup-166986542)
+[![Known Vulnerabilities](https://snyk.io/test/github/Wokoro/way_farer_test/develop/badge.svg)](https://snyk.io/test/github/Wokoro/way_farer_test/develop)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
