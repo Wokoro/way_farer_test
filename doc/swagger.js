@@ -17,7 +17,7 @@ export default {
   paths: {
     '/api/v1/auth/signup': {
       post: {
-        tags: ['Signup'],
+        tags: ['User'],
         consumes: [
           'application/json'
         ],
@@ -45,6 +45,41 @@ export default {
             in: 'body',
             description: 'Specifies details of a user',
             schema: { $ref: '#/definitions/UserSignUp' },
+            type: 'object'
+          }
+        ]
+      }
+    },
+    '/api/v1/auth/signin': {
+      post: {
+        tags: ['User'],
+        consumes: [
+          'application/json'
+        ],
+        produces: [
+          'application/json'
+        ],
+        summary: 'This route enable\'s users signin',
+        responses: {
+          200: {
+            description: 'OK'
+          },
+          400: {
+            description: 'Bad request'
+          },
+          500: {
+            description: 'Server error'
+          }
+        },
+        content: {
+          'application/json': {}
+        },
+        parameters: [
+          {
+            name: 'user',
+            in: 'body',
+            description: 'Specifies details of a user',
+            schema: { $ref: '#/definitions/UserSignIn' },
             type: 'object'
           }
         ]
@@ -90,6 +125,22 @@ export default {
       },
       json: {
         name: 'UserSignUp'
+      }
+    },
+    UserSignIn: {
+      type: 'object',
+      properties: {
+        email: {
+          type: 'string',
+          required: true
+        },
+        password: {
+          type: 'string',
+          required: true
+        }
+      },
+      json: {
+        name: 'UserSignIn'
       }
     }
   }
