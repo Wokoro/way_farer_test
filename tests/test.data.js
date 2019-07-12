@@ -31,6 +31,21 @@ export const busReq = {
   }
 };
 
+export const tripCreateDBResponse = [
+  {
+    id: 13,
+    bus_id: 11,
+    origin: 'Bayelsa',
+    destination: 'Delta',
+    trip_date: '2019-02-13T08:00:00.000Z',
+    fare: '20.00',
+    status: 'active',
+    duration: '1hour 30min',
+    available_seats: [2, 3, 4, 5, 6]
+
+  }
+];
+
 export const busCreateDBResponse = [{
   id: 6,
   number_plate: '123jkldwrokf',

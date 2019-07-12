@@ -15,12 +15,14 @@ const Bus = {
       manufacturer,
       model,
       year, 
-      capacity
+      capacity,
+      available
       )
-      values($1, $2, $3, $4, $5) RETURNING *`;
+      values($1, $2, $3, $4, $5, $6) RETURNING *`;
         
-    const { rows } = await db.query(query, [number_plate, manufacturer, model, year, Number(capacity)]);
-  
+    const { rows } = await db.query(query, [
+      number_plate, manufacturer, model, year, Number(capacity), true
+    ]);
     return rows;
   },
   
@@ -29,6 +31,20 @@ const Bus = {
     WHERE ${column} = $1`;
     const { rows } = await db.query(query, [value]);
     return rows;
+  },
+
+  getBuses: async () => {
+    const query = 'SELECT * FROM buses';
+    const { rows } = await db.query(query);
+    return rows;
+  },
+  update: async (columnToUpdate, updateValue, searchColumn, searchValue) => {
+    const query = `UPDATE buses 
+    SET ${columnToUpdate} = $1 
+    WHERE ${searchColumn} = $2`;
+
+    const result = await db.query(query, [updateValue, searchValue]);
+    return result;
   }
 };
 
