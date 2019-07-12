@@ -1,4 +1,4 @@
-import User from './model';
+import Trip from '../trip/model';
 import Bus from '../bus/model';
 
 /** 
@@ -20,31 +20,17 @@ export const createBus = async (req, res) => {
     status: 'success',
     data: response
   });
-}; 
-
+};
+ 
 /** 
    * @param {Object} req
    * @param {Object} res
    * @returns {Object} returns a success message with user data
   */
-export const signup = async (req, res) => {
-  const response = await User.createUser(req.body);
+export const createTrip = async (req, res) => {
+  const [response] = await Trip.create(req);
   return res.status(200).json({
     status: 'success',
     data: response
-  });
-};
-
-/** 
-   * @param {Object} req
-   * @param {Object} res
-   * @returns {Object} return success message and user data
-  */
-export const signin = async (req, res) => {
-  const { body } = res;
-  const { user_id, token, is_admin } = body;
-  return res.status(200).json({ 
-    status: 'success', 
-    data: { user_id, is_admin, token } 
   });
 };
