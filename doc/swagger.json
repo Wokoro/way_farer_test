@@ -1,0 +1,496 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "way_farer",
+    "description": "TODO: Add Description",
+    "contact": {}
+  },
+  "securityDefinitions": {},
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/v1/auth/signup": {
+      "post": {
+        "description": "Enables users to signup in way_farer_application",
+        "summary": "signup",
+        "tags": [
+          "User"
+        ],
+        "operationId": "AuthSignupPost",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "last_name",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "first_name",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "sex",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "phone_number",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "address",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "is_admin",
+            "in": "formData",
+            "required": true,
+            "type": "boolean",
+            "description": ""
+          },
+          {
+            "name": "email",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema":{
+              "title": "Success",
+              "example": {
+                "status": "success",
+                "data": {
+                    "user_id": 1,
+                    "is_admin": false,
+                    "first_name": "Douye",
+                    "last_name": "Wokoro",
+                    "phone_number": "09066027353",
+                    "email": "wokorosamuel@yahoo.com",
+                    "address": "Arizonal street yenezue-gene, Bayelsa state",
+                    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Indva29yb3NhbXVlbDExOEB5YWhvby5jb20iLCJpc19hZG1pbiI6ZmFsc2UsImlhdCI6MTU2MjkwMDczNH0.GxMFTdL09d4shhp4K8iNm5GMtBJZKnLkBXpeDzMhNE0"
+                }
+              }
+            },
+            "description": "Success",
+            "headers": {}
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "title": "In valid token",
+              "example": {
+                "status": 400,
+                "message": "Invalid token"
+              }
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "status": 400,
+                "message": "Bad Resquest"
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin, Accept-Encoding"
+              },
+              "Access-Control-Allow-Credentials": {
+                "type": "string",
+                "default": "true"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "40"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"28-S2p4LaU/lqnXf91pFp3MvD/fAew\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Thu, 11 Jul 2019 21:38:31 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/signin": {
+      "post": {
+        "description": "Enables users to signup in way_farer_application",
+        "summary": "signin",
+        "tags": [
+          "User"
+        ],
+        "operationId": "AuthSigninPost",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "email",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "example": {
+              "status": "success",
+              "data": {
+                  "user_id": 1,
+                  "is_admin": false,
+                  "first_name": "Douye",
+                  "last_name": "Wokoro",
+                  "phone_number": "09066027353",
+                  "email": "wokorosamuel@yahoo.com",
+                  "address": "Arizonal street yenezue-gene, Bayelsa state",
+                  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Indva29yb3NhbXVlbDExOEB5YWhvby5jb20iLCJpc19hZG1pbiI6ZmFsc2UsImlhdCI6MTU2MjkwMDczNH0.GxMFTdL09d4shhp4K8iNm5GMtBJZKnLkBXpeDzMhNE0"
+              }
+            },
+            "description": "Success",
+            "headers": {}
+          },
+          "400": {
+            "description": "",
+            "examples": {
+              "application/json; charset=utf-8": {
+                "status": 400,
+                "message": "Bad Request"
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin, Accept-Encoding"
+              },
+              "Access-Control-Allow-Credentials": {
+                "type": "string",
+                "default": "true"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "40"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"28-S2p4LaU/lqnXf91pFp3MvD/fAew\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Thu, 11 Jul 2019 21:38:31 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/bus": {
+      "post": {
+        "description": "Enables users to signup in way_farer_application",
+        "summary": "bus",
+        "tags": [
+          "Admin"
+        ],
+        "operationId": "BusPost",
+        "deprecated": false,
+        "produces": [
+          "application/json; charset=utf-8"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "number_plate",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "manufacturer",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "model",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "year",
+            "in": "formData",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          },
+          {
+            "name": "capacity",
+            "in": "formData",
+            "required": true,
+            "type": "integer",
+            "format": "int32",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "title": "Success",
+              "example": {
+                "status": "success",
+                "data": {
+                  "id": 1,
+                  "number_plate": "2341 BYS",
+                  "manufacturer": "Honda",
+                  "model": "IX 35",
+                  "year": "2017",
+                  "capacity": 6
+                }
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin, Accept-Encoding"
+              },
+              "Access-Control-Allow-Credentials": {
+                "type": "string",
+                "default": "true"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "40"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"28-S2p4LaU/lqnXf91pFp3MvD/fAew\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Thu, 11 Jul 2019 21:38:31 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "title": "In valid token",
+              "example": {
+                "status": 400,
+                "message": "Invalid token"
+              }
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "status": 400,
+                "message": "Invalid token"
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin, Accept-Encoding"
+              },
+              "Access-Control-Allow-Credentials": {
+                "type": "string",
+                "default": "true"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "40"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"28-S2p4LaU/lqnXf91pFp3MvD/fAew\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Thu, 11 Jul 2019 21:38:31 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "title": "Bad Request",
+              "example": {
+                "status": 401,
+                "message": "Authorization Failed"
+              }
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "status": 401,
+                "message": "Authorization failed"
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin, Accept-Encoding"
+              },
+              "Access-Control-Allow-Credentials": {
+                "type": "string",
+                "default": "true"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "40"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"28-S2p4LaU/lqnXf91pFp3MvD/fAew\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Thu, 11 Jul 2019 21:38:31 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+  }
+}
