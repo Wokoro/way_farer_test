@@ -65,22 +65,20 @@ export const checkBusAvailability = async ({ body }, res, next) => {
     }
     return res.status(400).json({
       status: 'Error',
-      errors: `${number_plate} is unavailable, 
-      ${availableBuses.length > 0 
-    ? `${availableBuses.length > 1 
-      ? `Available Buses : ${availableBuses}` 
-      : `Available Bus : ${availableBuses}`}`
-    : 'all buses are busy'}`
+      errors: `${number_plate} is unavailable, ${availableBuses.length > 0 
+        ? `${availableBuses.length > 1 
+          ? `Available Buses : ${availableBuses}` 
+          : `Available Bus : ${availableBuses}`}`
+        : 'all buses are busy'}`
     });
   }
   return res.status(400).json({
     status: 'Error',
-    errors: `${number_plate} does not exist,
-        ${availableBuses.length > 0
-    ? `${availableBuses.length > 1
-      ? `Available Buses : ${availableBuses}` 
-      : `Available Bus : ${availableBuses}`}`
-    : 'all buses are busy'}`
+    errors: `${number_plate} does not exist, ${availableBuses.length > 0
+      ? `${availableBuses.length > 1
+        ? `Available Buses : ${availableBuses}` 
+        : `Available Bus : ${availableBuses}`}`
+      : 'all buses are busy'}`
   });
 };
 
