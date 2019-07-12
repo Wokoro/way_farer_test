@@ -1,8 +1,8 @@
 import logger from '../../utils/logger';
+import { checkErrors } from '../../utils';
 import { 
   userSignupInputValidations,
   userSigninInputValidations,
-  checkErrors,
   checkUserExistence,
   checkUniqueness 
 } from './validator';

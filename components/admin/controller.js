@@ -1,4 +1,5 @@
 import User from './model';
+import Bus from '../bus/model';
 
 /** 
  * @param {Object} res
@@ -6,6 +7,19 @@ import User from './model';
 */
 export const getTrips = ({ body }, res) => {
   console.log('body', body, 'res', res);
+}; 
+
+/** 
+   * @param {Object} req
+   * @param {Object} res
+   * @returns {Object} returns a success message with user data
+  */
+export const createBus = async (req, res) => {
+  const [response] = await Bus.create(req);
+  return res.status(200).json({
+    status: 'success',
+    data: response
+  });
 }; 
 
 /** 
@@ -27,7 +41,7 @@ export const signup = async (req, res) => {
    * @returns {Object} return success message and user data
   */
 export const signin = async (req, res) => {
-  const { body } = req;
+  const { body } = res;
   const { user_id, token, is_admin } = body;
   return res.status(200).json({ 
     status: 'success', 

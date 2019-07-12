@@ -1,0 +1,295 @@
+{
+	"info": {
+		"_postman_id": "5ff4eab3-4247-4815-bcbd-48ebf18b5365",
+		"name": "way_farer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "last_name",
+							"value": "       wokoro",
+							"type": "text"
+						},
+						{
+							"key": "first_name",
+							"value": "douye",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "samsizzy199",
+							"type": "text"
+						},
+						{
+							"key": "sex",
+							"value": "male",
+							"type": "text"
+						},
+						{
+							"key": "phone_number",
+							"value": "09066027353",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "Arizonal street yenezue-gene, Bayelsa state",
+							"type": "text"
+						},
+						{
+							"key": "is_admin",
+							"value": "true",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "wokorosamuel118@yahoo.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"signup"
+					]
+				},
+				"description": "Enables users to signup in way_farer_application"
+			},
+			"response": []
+		},
+		{
+			"name": "signin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "password",
+							"value": "samsizzy199",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "wokorosamuel@yahoo.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/auth/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"signin"
+					]
+				},
+				"description": "Enables users to signup in way_farer_application"
+			},
+			"response": []
+		},
+		{
+			"name": "bus",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Indva29yb3NhbXVlbEB5YWhvby5jb20iLCJpc19hZG1pbiI6dHJ1ZSwiaWF0IjoxNTYyODgyOTI3fQ.DnZ4Zl75DGV8AXUgXIte-xZMp7mU8t-wVoB15UOWxmM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "number_plate",
+							"value": "123jkldwrokf",
+							"type": "text"
+						},
+						{
+							"key": "manufacturer",
+							"value": "samuel",
+							"type": "text"
+						},
+						{
+							"key": "model",
+							"value": "BMW",
+							"type": "text"
+						},
+						{
+							"key": "year",
+							"value": "2019",
+							"type": "text"
+						},
+						{
+							"key": "capacity",
+							"value": "34",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/bus",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"bus"
+					]
+				},
+				"description": "Enables users to signup in way_farer_application"
+			},
+			"response": [
+				{
+					"name": "bus",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "number_plate",
+									"value": "123jkld",
+									"type": "text"
+								},
+								{
+									"key": "manufacturer",
+									"value": "samuel",
+									"type": "text"
+								},
+								{
+									"key": "model",
+									"value": "BMW",
+									"type": "text"
+								},
+								{
+									"key": "year",
+									"value": "2019",
+									"type": "text"
+								},
+								{
+									"key": "capacity",
+									"value": "24",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/bus",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"bus"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin, Accept-Encoding"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "40"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"28-S2p4LaU/lqnXf91pFp3MvD/fAew\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 11 Jul 2019 21:38:31 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": 400,\n    \"message\": \"Invalid token\"\n}"
+				}
+			]
+		}
+	]
+}

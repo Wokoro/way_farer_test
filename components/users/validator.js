@@ -1,4 +1,4 @@
-import { check, validationResult } from 'express-validator';
+import { check } from 'express-validator';
 import bcrypt from 'bcrypt';
 import User from './model';
 
@@ -50,12 +50,7 @@ export const userSignupInputValidations = [
     .isString()
     .optional()
     .isIn(['male', 'female'])
-    .trim(),
-
-  check('is_admin', 'Admin must be a boolean value \'true\' or \'false\'')
-    .isBoolean()
     .trim()
-    .exists()
 ];
 
 /**
@@ -76,25 +71,6 @@ export const userSigninInputValidations = [
     .isLength({ min: 5 })
     .exists()
 ];
-
-/**
- * A function to return all express validator errors
- * @param {*} req 
- * @param {*} res 
- * @param {*} next 
- * @returns {Void} return nothing
- */
-export const checkErrors = (req, res, next) => {
-  const errors = validationResult(req);
-  const errorsHolder = [];
-  for (const error of errors.array()) {
-    errorsHolder.push(error.msg);
-  }
-  if (!errors.isEmpty()) {
-    return res.status(400).json({ status: 'Error', errors: errorsHolder });
-  }
-  next();
-};
 
 /**
  * Function to check if the user already exists on database
@@ -122,7 +98,8 @@ export const checkUniqueness = async ({ body }, res, next) => {
  * @param {*} next 
  * @returns {Void} returns nothing
  */
-export const checkUserExistence = async ({ body }, res, next) => {
+export const checkUserExistence = async (req, res, next) => {
+  const { body } = req;
   const { email, password: rawPassword } = body;
   const result = await User.getUser('email', email);
  
@@ -137,7 +114,7 @@ export const checkUserExistence = async ({ body }, res, next) => {
         errors: 'Wrong username or password'
       });
     }
-    [res.body] = result;
+    [req.body] = result;
     return next();
   }
   return res.status(400).json({

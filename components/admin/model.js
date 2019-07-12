@@ -15,9 +15,9 @@ import { generateToken, hashPassword } from '../../utils';
 */
 const User = {
   createUser: async ({ 
-    email, first_name, last_name, sex, phone_number, password, address
+    email, first_name, last_name, sex, phone_number, password, address, is_admin
   }) => {
-    const userToken = generateToken({ email, is_admin: false });
+    const userToken = generateToken(email);
 
     const query = `INSERT INTO users( 
       email, 
@@ -49,7 +49,7 @@ const User = {
       phone_number,
       userPassword,
       address, 
-      false,
+      is_admin,
       userToken
     ]);
   

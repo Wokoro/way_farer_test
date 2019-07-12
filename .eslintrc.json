@@ -15,7 +15,6 @@
         "sourceType": "module"
     },
     "rules": {
-        "no-undef":0,
         "linebreak-style":0,
         "camelcase":0,
         "no-plusplus": 0,
