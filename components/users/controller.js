@@ -1,11 +1,23 @@
 import User from './model';
+import Trip from '../trip/model';
 
-/** 
+/** Function to get all trips
+ * @param {Object} req
  * @param {Object} res
  * @returns {Void} null
 */
-export const getTrips = ({ body }, res) => {
-  console.log('body', body, 'res', res);
+export const getTrips = async (req, res) => {
+  const trips = await Trip.getAllTrips();
+  if (trips.length > 0) {
+    return res.status(200).json({
+      status: 'success',
+      data: trips
+    });
+  }
+  return res.status(200).json({
+    status: 'success',
+    message: 'No trip available'
+  });
 }; 
 
 /** 

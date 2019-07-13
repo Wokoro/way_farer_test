@@ -31,23 +31,23 @@ export const routesLoader = (routes, router) => {
 
 /**
  * Function to generate JWT
- * @param {*} payload 
+ * @param {Object} payload 
  * @return {String} the jwt generated
  */
 export const generateToken = payload => jwt.sign(payload, process.env.PRI_KEY);
 
 /**
  * function to verify user token
- * @param {*} token 
+ * @param {Object} token 
  * @returns {Void} returns nothings
  */
 export const verifyToken = token => jwt.verify(token, process.env.PRI_KEY);
 
 /**
  * Fuction to verify token
- * @param {*} req 
- * @param {*} res 
- * @param {*} next 
+ * @param {Object} req 
+ * @param {Object} res 
+ * @param {Object} next 
  * @returns {Void} returns void
  */
 export const passToken = async (req, res, next) => {
@@ -83,9 +83,9 @@ export const hashPassword = password => bcrypt.hashSync(password, 10);
 
 /**
  * A function to return all express validator errors
- * @param {*} req 
- * @param {*} res 
- * @param {*} next 
+ * @param {Object} req 
+ * @param {Object} res 
+ * @param {Object} next 
  * @returns {Void} return nothing
  */
 export const checkErrors = (req, res, next) => {

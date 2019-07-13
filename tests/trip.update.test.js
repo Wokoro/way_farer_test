@@ -3,7 +3,6 @@ import chai from 'chai';
 import sinonChai from 'sinon-chai';
 import { updateTrip } from '../components/admin/controller';
 import Trip from '../components/trip/model';
-import Bus from '../components/bus/model';
 import { tripIdValidation } from '../components/trip/validator';
 
 import {
@@ -18,35 +17,38 @@ const { expect } = chai;
 let apiResponse = {};
 
 
-describe('tests for successful trip cancellaton: PATCH /trips/:tripId', () => {  
-  before(async () => {
-    sinon.stub(res, 'status').returnsThis();
-    sinon.stub(res, 'json').returnsThis();
-    sinon.stub(Trip, 'updateTrip').returns([{}]);
-    await updateTrip(tripCancelReq, res);
-    [apiResponse] = res.json.getCall(0).args;
-  });
+describe(
+  'tests for successful trip cancellaton: PATCH /trips/:tripId',
+  () => {  
+    before(async () => {
+      sinon.stub(res, 'status').returnsThis();
+      sinon.stub(res, 'json').returnsThis();
+      sinon.stub(Trip, 'updateTrip').returns([{}]);
+      await updateTrip(tripCancelReq, res);
+      [apiResponse] = res.json.getCall(0).args;
+    });
   
-  after(() => {
-    sinon.restore();
-  });
+    after(() => {
+      sinon.restore();
+    });
   
-  it('it should return 200 status', async () => {
-    expect(res.status).to.have.been.calledWith(200);
-  });
+    it('it should return 200 status', async () => {
+      expect(res.status).to.have.been.calledWith(200);
+    });
 
-  it('it should return trip details', async () => {
-    expect(apiResponse.data).to.not.be.null;
-  });
+    it('it should return trip details', async () => {
+      expect(apiResponse.data).to.not.be.null;
+    });
 
-  it('it should return message of activation', async () => {
-    expect(apiResponse.data).to.have.property('message');
-  });
+    it('it should return message of activation', async () => {
+      expect(apiResponse.data).to.have.property('message');
+    });
   
-  it('it should return updated trip information', async () => {
-    expect(apiResponse.data).to.have.property('trip_data');
-  });
-});
+    it('it should return updated trip information', async () => {
+      expect(apiResponse.data).to.have.property('trip_data');
+    });
+  }
+);
 
 describe('tests for successful trip activation: PATCH /trips/:tripId', () => {  
   before(async () => {

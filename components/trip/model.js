@@ -51,6 +51,12 @@ const Trip = {
     return rows;
   },
 
+  getAllTrips: async () => {
+    const query = 'SELECT * FROM trips';
+    const { rows } = await db.query(query);
+    return rows;
+  },
+
   updateTrip: async (updateColum, updateValue, searchColumn, searchValue) => {
     const query = `UPDATE trips 
     SET ${updateColum} = $1 

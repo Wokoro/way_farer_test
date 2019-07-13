@@ -1,13 +1,6 @@
 import Trip from '../trip/model';
 import Bus from '../bus/model';
 
-/** 
- * @param {Object} res
- * @returns {Void} null
-*/
-export const getTrips = ({ body }, res) => {
-  console.log('body', body, 'res', res);
-}; 
 
 /** 
    * @param {Object} req
