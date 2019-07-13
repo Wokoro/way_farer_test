@@ -279,6 +279,165 @@
         }
       }
     },
+    "/api/v1/trips": {
+      "get": {
+        "description": "Enables users view all available trips in way_farer_application",
+        "summary": "Users can view all trips",
+        "tags": [
+          "User"
+        ],
+        "operationId": "TripsGet",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "examples": [
+              {
+              "status": "success",
+              "data": [
+                {
+                    "id": 1,
+                    "bus_id": 1,
+                    "origin": "Bayelsa",
+                    "destination": "Delta",
+                    "trip_date": "2019-02-13T08:00:00.000Z",
+                    "fare": "20.00",
+                    "status": "active",
+                    "duration": "1hour 30min",
+                    "available_seats": [
+                        2,
+                        3,
+                        4,
+                        5,
+                        6
+                    ]
+                }
+            ]
+              },
+              {
+                "status": "success",
+                "message": "No trip available"
+                }
+            ],
+            "description": "Success",
+            "headers": {}
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "title": "In valid token",
+              "example": {
+                "status": "Error",
+                "message": "Invalid token"
+              }
+            },
+            "example": {
+              "application/json; charset=utf-8": {
+                "status": "Error",
+                "message": "Invalid token"
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin, Accept-Encoding"
+              },
+              "Access-Control-Allow-Credentials": {
+                "type": "string",
+                "default": "true"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "40"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"28-S2p4LaU/lqnXf91pFp3MvD/fAew\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Thu, 11 Jul 2019 21:38:31 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "title": "Bad Request",
+              "example": {
+                "status": 401,
+                "message": "Authorization Failed"
+              }
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "status": 401,
+                "message": "Authorization failed"
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin, Accept-Encoding"
+              },
+              "Access-Control-Allow-Credentials": {
+                "type": "string",
+                "default": "true"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "40"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"28-S2p4LaU/lqnXf91pFp3MvD/fAew\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Thu, 11 Jul 2019 21:38:31 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/bus": {
       "post": {
         "description": "Enables Admin to create bus in way_farer_application",
@@ -635,7 +794,13 @@
             "examples":[ {
               "application/json; charset=utf-8": {
                 "status": "Error",
-                "message": "4370 BYS is unavailable, \nall buses are busy"
+                "message": "4370 BYS is unavailable, \nno bus is available"
+              }
+            },
+            {
+              "application/json; charset=utf-8": {
+                "status": "Error",
+                "message": "4370 BYS is unavailable, \nno "
               }
             },
             {
