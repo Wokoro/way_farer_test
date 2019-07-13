@@ -56,7 +56,6 @@ export const passToken = async (req, res, next) => {
   || req.body.token;
   
   const token = rawToken ? rawToken.split(' ')[1] : false;
- 
   if (token) {
     try {
       const issureToken = verifyToken(token);

@@ -225,8 +225,7 @@
 <a name='L177'></a><a href='#L177'>177</a>
 <a name='L178'></a><a href='#L178'>178</a>
 <a name='L179'></a><a href='#L179'>179</a>
-<a name='L180'></a><a href='#L180'>180</a>
-<a name='L181'></a><a href='#L181'>181</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L180'></a><a href='#L180'>180</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -265,11 +264,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -291,25 +287,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -350,6 +327,27 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -441,7 +439,8 @@ const busTableCreateQuery = `
         manufacturer VARCHAR(128) NOT NULL,
         model VARCHAR(128) NOT NULL,
         year VARCHAR(128) NOT NULL,
-        capacity INT NOT NULL
+        capacity INT NOT NULL,
+        available BOOL NOT NULL
     )`;
 &nbsp;
 const 
@@ -451,15 +450,11 @@ const
         bus_id INT REFERENCES buses (id),
         origin VARCHAR(128) NOT NULL,
         destination VARCHAR(128) NOT NULL,
-        trip_data DATE NOT NULL DEFAULT CURRENT_DATE,
+        trip_date DATE NOT NULL DEFAULT CURRENT_DATE,
         fare NUMERIC NOT NULL,
-        manufacturer VARCHAR(128) NOT NULL,
-        model VARCHAR(128) NOT NULL,
-        year VARCHAR(128) NOT NULL,
-        capacity VARCHAR(128) NOT NULL,
         status VARCHAR(128) NOT NULL,
         duration VARCHAR(128) NOT NULL,
-        occupied_seats INTEGER[] NOT NULL
+        available_seats INTEGER[] NOT NULL
     )`;
 &nbsp;
 const bookingTableCreateQuery = `
@@ -478,27 +473,6 @@ const queries = [
 ];
 &nbsp;
 /**
- * Function to create database table
- * @param {String[]} dbQueries for creating databases
- * @returns {Void} returns null
- * 
-*/
-export const createTables = <span class="fstat-no" title="function not covered" >as</span>ync () =&gt; {
-<span class="cstat-no" title="statement not covered" >  for (const query of queries) {</span>
-<span class="cstat-no" title="statement not covered" >    await db.query(query);</span>
-  }
-<span class="cstat-no" title="statement not covered" >  createAdmin(</span>
-    'wokorosamuel@yahoo.com',
-    'Douye',
-    'Wokoro',
-    'male',
-    '09066027359',
-    'samsizzy199',
-    'No. 38 Arizonal street yenezue-gene, Bayelsa state'
-  );
-};
-&nbsp;
-/**
  * 
  * @param {*} email 
  * @param {*} first_name 
@@ -507,6 +481,8 @@ export const createTables = <span class="fstat-no" title="function not covered" 
  * @param {*} phone_number 
  * @param {*} password 
  * @param {*} address 
+ * @returns {Void} return nothing
+ * 
  */
 const createAdmin = <span class="fstat-no" title="function not covered" >as</span>ync (
   email, first_name, last_name, sex, phone_number, password, address
@@ -538,6 +514,27 @@ const createAdmin = <span class="fstat-no" title="function not covered" >as</spa
     true,
     userToken
   ]);
+};
+&nbsp;
+/**
+ * Function to create database table
+ * @param {String[]} dbQueries for creating databases
+ * @returns {Void} returns null
+ * 
+*/
+export const createTables = <span class="fstat-no" title="function not covered" >as</span>ync () =&gt; {
+<span class="cstat-no" title="statement not covered" >  for (const query of queries) {</span>
+<span class="cstat-no" title="statement not covered" >    await db.query(query);</span>
+  }
+<span class="cstat-no" title="statement not covered" >  createAdmin(</span>
+    'wokorosamuel@yahoo.com',
+    'Douye',
+    'Wokoro',
+    'male',
+    '09066027359',
+    'samsizzy199',
+    'No. 38 Arizonal street yenezue-gene, Bayelsa state'
+  );
 };
 &nbsp;
 /**
@@ -592,7 +589,7 @@ export default db;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Jul 11 2019 20:56:54 GMT-0700 (Pacific Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Jul 13 2019 06:56:39 GMT-0700 (Pacific Daylight Time)
 </div>
 </div>
 <script src="..\prettify.js"></script>

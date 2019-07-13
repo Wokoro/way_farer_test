@@ -20,7 +20,7 @@
     "/api/v1/auth/signup": {
       "post": {
         "description": "Enables users to signup in way_farer_application",
-        "summary": "signup",
+        "summary": "User signup endpoint",
         "tags": [
           "User"
         ],
@@ -177,7 +177,7 @@
     "/api/v1/auth/signin": {
       "post": {
         "description": "Enables users to signup in way_farer_application",
-        "summary": "signin",
+        "summary": "User sign endpoint",
         "tags": [
           "User"
         ],
@@ -281,8 +281,8 @@
     },
     "/api/v1/bus": {
       "post": {
-        "description": "Enables users to signup in way_farer_application",
-        "summary": "bus",
+        "description": "Enables Admin to create bus in way_farer_application",
+        "summary": "Admin bus creation endpoint",
         "tags": [
           "Admin"
         ],
@@ -298,7 +298,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "required": false,
+            "required": true,
             "default": "Bearer {token}",
             "type": "string"
           },
@@ -400,16 +400,23 @@
             "schema": {
               "title": "In valid token",
               "example": {
-                "status": 400,
+                "status": "Error",
                 "message": "Invalid token"
               }
             },
-            "examples": {
+            "examples": [{
               "application/json; charset=utf-8": {
-                "status": 400,
+                "status": "Error",
                 "message": "Invalid token"
               }
             },
+            {
+              "application/json; charset=utf-8": {
+                "status": "Error",
+                "message": "Bus already exists"
+              }
+            }
+          ],
             "headers": {
               "X-Powered-By": {
                 "type": "string",
@@ -450,6 +457,447 @@
                 "message": "Authorization Failed"
               }
             },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "status": 401,
+                "message": "Authorization failed"
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin, Accept-Encoding"
+              },
+              "Access-Control-Allow-Credentials": {
+                "type": "string",
+                "default": "true"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "40"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"28-S2p4LaU/lqnXf91pFp3MvD/fAew\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Thu, 11 Jul 2019 21:38:31 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/trip": {
+      "post": {
+        "description": "Enables admin to create trip in way_farer_application",
+        "summary": "Admin trip creation endpoint",
+        "tags": [
+          "Admin"
+        ],
+        "operationId": "TripsPost",
+        "deprecated": false,
+        "produces": [
+          "application/json; charset=utf-8"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "number_plate",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "origin",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "destination",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "trip_date",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "fare",
+            "in": "formData",
+            "required": true,
+            "type": "integer",
+            "default":"00.00",
+            "description": ""
+          },
+          {
+            "name": "status",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "default":"active",
+            "description": ""
+          },
+          {
+            "name": "duration",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "title": "Success",
+              "example": {
+                "status": "success",
+                "data": {
+                  "id": 13,
+                  "bus_id": 11,
+                  "origin": "Bayelsa",
+                  "destination": "Delta",
+                  "trip_date": "2019-02-13T08:00:00.000Z",
+                  "fare": "20.00",
+                  "status": "active",
+                  "duration": "1hour 30min",
+                  "available_seats": [ 2, 3, 4, 5, 6 ]
+                }
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin, Accept-Encoding"
+              },
+              "Access-Control-Allow-Credentials": {
+                "type": "string",
+                "default": "true"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "40"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"28-S2p4LaU/lqnXf91pFp3MvD/fAew\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Thu, 11 Jul 2019 21:38:31 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "examples":[ {
+              "application/json; charset=utf-8": {
+                "status": "Error",
+                "message": "4370 BYS is unavailable, \nall buses are busy"
+              }
+            },
+            {
+              "application/json; charset=utf-8": {
+                "status": "Error",
+                "message": "4370 BYS is unavailable, \n Available Buses : 4350 BYS 4350 BYS"
+              }
+            },
+            {
+              "application/json; charset=utf-8": {
+                "status": "Error",
+                "message": "4300 BYS does not exist, \n Available Buses : 1432 BYC,1435 BYC"
+              }
+            }
+          ],
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin, Accept-Encoding"
+              },
+              "Access-Control-Allow-Credentials": {
+                "type": "string",
+                "default": "true"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "40"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"28-S2p4LaU/lqnXf91pFp3MvD/fAew\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Thu, 11 Jul 2019 21:38:31 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "title": "Bad Request",
+              "example": {
+                "status": 401,
+                "message": "Authorization Failed"
+              }
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "status": 401,
+                "message": "Authorization failed"
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin, Accept-Encoding"
+              },
+              "Access-Control-Allow-Credentials": {
+                "type": "string",
+                "default": "true"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "40"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"28-S2p4LaU/lqnXf91pFp3MvD/fAew\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Thu, 11 Jul 2019 21:38:31 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/trips/{tripId}": {
+      "patch": {
+        "description": "Enables admin to update trip status to either 'cancelled' or 'active' depending on the current trip status in way_farer_application",
+        "summary": "Admin updates trip status to 'cancelled' or 'active'",
+        "tags": [
+          "Admin"
+        ],
+        "operationId": "TripPatch",
+        "deprecated": false,
+        "produces": [
+          "application/json; charset=utf-8"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "tripId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "examples": [{
+              "status": "success",
+              "data": {
+                  "message": "Trip cancelled succesfully",
+                  "trip_data": {
+                      "id": 2,
+                      "bus_id": 1,
+                      "origin": "Bayelsa",
+                      "destination": "Delta",
+                      "trip_date": "2019-02-13T08:00:00.000Z",
+                      "fare": "20.00",
+                      "status": "cancelled",
+                      "duration": "1hour 30min",
+                      "available_seats": [
+                          2,
+                          3,
+                          4,
+                          5,
+                          6
+                      ]
+                  }
+              }
+              },
+              {
+                "status": "success",
+                "data": {
+                    "message": "Trip activated succesfully",
+                    "trip_data": {
+                        "id": 2,
+                        "bus_id": 1,
+                        "origin": "Bayelsa",
+                        "destination": "Delta",
+                        "trip_date": "2019-02-13T08:00:00.000Z",
+                        "fare": "20.00",
+                        "status": "active",
+                        "duration": "1hour 30min",
+                        "available_seats": [
+                            2,
+                            3,
+                            4,
+                            5,
+                            6
+                        ]
+                    }
+                }
+              }
+            ],
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin, Accept-Encoding"
+              },
+              "Access-Control-Allow-Credentials": {
+                "type": "string",
+                "default": "true"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "40"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"28-S2p4LaU/lqnXf91pFp3MvD/fAew\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Thu, 11 Jul 2019 21:38:31 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "examples":[ {
+              "application/json; charset=utf-8": {
+                "status": "Error",
+                "errors": "Trip do not exists"
+              }
+            },
+            {
+              "application/json; charset=utf-8": {
+                "status": 400,
+    "message": "Invalid token"
+              }
+            }
+          ],
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin, Accept-Encoding"
+              },
+              "Access-Control-Allow-Credentials": {
+                "type": "string",
+                "default": "true"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "40"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"28-S2p4LaU/lqnXf91pFp3MvD/fAew\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Thu, 11 Jul 2019 21:38:31 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              }
+            }
+          },
+          "401": {
+            "description": "",
             "examples": {
               "application/json; charset=utf-8": {
                 "status": 401,

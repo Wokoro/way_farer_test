@@ -4,7 +4,7 @@ export const req = {
     is_admin: true,
     token: 'djklfjfjfjkleiefkl',
     password: 'samdjkl',
-    email: 'wokorosamuel@yahoo.com'
+    email: 'wokorosamuel@yahoo.com',
   }
 };
 
@@ -30,6 +30,39 @@ export const busReq = {
     capacity: 34
   }
 };
+
+export const tripCancelReq = {
+  params: {
+    tripId: {}
+  },
+  body: {
+    trip_status: 'active'
+  }
+};
+
+export const tripActivateReq = {
+  params: {
+    tripId: {}
+  },
+  body: {
+    trip_status: 'cancelled'
+  }
+};
+
+export const tripCreateDBResponse = [
+  {
+    id: 13,
+    bus_id: 11,
+    origin: 'Bayelsa',
+    destination: 'Delta',
+    trip_date: '2019-02-13T08:00:00.000Z',
+    fare: '20.00',
+    status: 'active',
+    duration: '1hour 30min',
+    available_seats: [2, 3, 4, 5, 6]
+
+  }
+];
 
 export const busCreateDBResponse = [{
   id: 6,

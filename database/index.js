@@ -33,7 +33,8 @@ const busTableCreateQuery = `
         manufacturer VARCHAR(128) NOT NULL,
         model VARCHAR(128) NOT NULL,
         year VARCHAR(128) NOT NULL,
-        capacity INT NOT NULL
+        capacity INT NOT NULL,
+        available BOOL NOT NULL
     )`;
 
 const 
@@ -43,15 +44,11 @@ const
         bus_id INT REFERENCES buses (id),
         origin VARCHAR(128) NOT NULL,
         destination VARCHAR(128) NOT NULL,
-        trip_data DATE NOT NULL DEFAULT CURRENT_DATE,
+        trip_date DATE NOT NULL DEFAULT CURRENT_DATE,
         fare NUMERIC NOT NULL,
-        manufacturer VARCHAR(128) NOT NULL,
-        model VARCHAR(128) NOT NULL,
-        year VARCHAR(128) NOT NULL,
-        capacity VARCHAR(128) NOT NULL,
         status VARCHAR(128) NOT NULL,
         duration VARCHAR(128) NOT NULL,
-        occupied_seats INTEGER[] NOT NULL
+        available_seats INTEGER[] NOT NULL
     )`;
 
 const bookingTableCreateQuery = `
@@ -70,27 +67,6 @@ const queries = [
 ];
 
 /**
- * Function to create database table
- * @param {String[]} dbQueries for creating databases
- * @returns {Void} returns null
- * 
-*/
-export const createTables = async () => {
-  for (const query of queries) {
-    await db.query(query);
-  }
-  createAdmin(
-    'wokorosamuel@yahoo.com',
-    'Douye',
-    'Wokoro',
-    'male',
-    '09066027359',
-    'samsizzy199',
-    'No. 38 Arizonal street yenezue-gene, Bayelsa state'
-  );
-};
-
-/**
  * 
  * @param {*} email 
  * @param {*} first_name 
@@ -99,6 +75,8 @@ export const createTables = async () => {
  * @param {*} phone_number 
  * @param {*} password 
  * @param {*} address 
+ * @returns {Void} return nothing
+ * 
  */
 const createAdmin = async (
   email, first_name, last_name, sex, phone_number, password, address
@@ -130,6 +108,27 @@ const createAdmin = async (
     true,
     userToken
   ]);
+};
+
+/**
+ * Function to create database table
+ * @param {String[]} dbQueries for creating databases
+ * @returns {Void} returns null
+ * 
+*/
+export const createTables = async () => {
+  for (const query of queries) {
+    await db.query(query);
+  }
+  createAdmin(
+    'wokorosamuel@yahoo.com',
+    'Douye',
+    'Wokoro',
+    'male',
+    '09066027359',
+    'samsizzy199',
+    'No. 38 Arizonal street yenezue-gene, Bayelsa state'
+  );
 };
 
 /**
