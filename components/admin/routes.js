@@ -1,8 +1,12 @@
 import checkIfAdmin from './validator';
-import { tripCreationValidation } from '../trip/validator';
-import { busCreationValidation, checkUniqueness, checkBusAvailability } from '../bus/validator';
+import { tripCreationValidation, tripIdValidation } from '../trip/validator';
+import {
+  busCreationValidation,
+  checkUniqueness, 
+  checkBusAvailability 
+} from '../bus/validator';
 import { checkErrors, passToken } from '../../utils';
-import { createBus, createTrip } from './controller';
+import { createBus, createTrip, updateTrip } from './controller';
 
 export default [
   {
@@ -28,5 +32,15 @@ export default [
       createTrip
     ],
     method: 'post',
+  },
+  {
+    path: '/api/v1/trips/:tripId',
+    handlers: [
+      passToken,
+      checkIfAdmin,
+      tripIdValidation,
+      updateTrip
+    ],
+    method: 'patch',
   }
 ];

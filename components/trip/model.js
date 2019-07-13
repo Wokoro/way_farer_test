@@ -49,7 +49,17 @@ const Trip = {
     WHERE ${column} = $1`;
     const { rows } = await db.query(query, [value]);
     return rows;
+  },
+
+  updateTrip: async (updateColum, updateValue, searchColumn, searchValue) => {
+    const query = `UPDATE trips 
+    SET ${updateColum} = $1 
+    WHERE ${searchColumn} = $2 
+    RETURNING *`;
+    const { rows } = await db.query(query, [updateValue, searchValue]);
+    return rows;
   }
+
 };
 
 export default Trip;
