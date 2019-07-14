@@ -3,7 +3,6 @@ import chai from 'chai';
 import sinonChai from 'sinon-chai';
 import { updateTrip } from '../components/admin/controller';
 import Trip from '../components/trip/model';
-import Bus from '../components/bus/model';
 import { tripIdValidation } from '../components/trip/validator';
 
 import {

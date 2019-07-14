@@ -279,6 +279,425 @@
         }
       }
     },
+    "/api/v1/trips": {
+      "get": {
+        "description": "Enables users to all trips",
+        "summary": "User sign endpoint",
+        "tags": [
+          "User"
+        ],
+        "operationId": "TripsGet",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "origin",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "destination",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "example": {
+              "status": "success",
+              "data": {
+                  "user_id": 1,
+                  "is_admin": false,
+                  "first_name": "Douye",
+                  "last_name": "Wokoro",
+                  "phone_number": "09066027353",
+                  "email": "wokorosamuel@yahoo.com",
+                  "address": "Arizonal street yenezue-gene, Bayelsa state",
+                  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Indva29yb3NhbXVlbDExOEB5YWhvby5jb20iLCJpc19hZG1pbiI6ZmFsc2UsImlhdCI6MTU2MjkwMDczNH0.GxMFTdL09d4shhp4K8iNm5GMtBJZKnLkBXpeDzMhNE0"
+              }
+            },
+            "description": "Success",
+            "headers": {}
+          },
+          "400": {
+            "description": "",
+            "examples": {
+              "application/json; charset=utf-8": {
+                "status": 400,
+                "message": "Bad Request"
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin, Accept-Encoding"
+              },
+              "Access-Control-Allow-Credentials": {
+                "type": "string",
+                "default": "true"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "40"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"28-S2p4LaU/lqnXf91pFp3MvD/fAew\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Thu, 11 Jul 2019 21:38:31 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/trips/?destination": {
+      "get": {
+        "description": "Enables users to view all trips filtered based on destination",
+        "summary": "View all trips for a specified destination",
+        "tags": [
+          "User"
+        ],
+        "operationId": "TripsGetDestination",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "destination",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "examples": [
+              {
+                "status": "success",
+                "data": [
+                    {
+                        "id": 1,
+                        "bus_id": 1,
+                        "origin": "Bayelsa",
+                        "destination": "USA",
+                        "trip_date": "2019-02-13T08:00:00.000Z",
+                        "fare": "20.00",
+                        "status": "active",
+                        "duration": "1hour 30min",
+                        "available_seats": [ 2, 3, 4, 5, 6 ]
+                    },
+                    {
+                      "id": 2,
+                      "bus_id": 4,
+                      "origin": "Bayelsa",
+                      "destination": "Lagos",
+                      "trip_date": "2019-02-13T08:00:00.000Z",
+                      "fare": "20.00",
+                      "status": "active",
+                      "duration": "1hour 30min",
+                      "available_seats": [ 2, 3, 4, 5, 6 ]
+                  }
+                  ]
+              },
+              {
+                "status": "success",
+                "message": "No trip(s) from origin China"
+              }
+            ],
+            "description": "Success",
+            "headers": {}
+          },
+          "400": {
+            "description": "",
+            "examples": {
+              "application/json; charset=utf-8": {
+                "status": 400,
+                "message": "Invalid token"
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin, Accept-Encoding"
+              },
+              "Access-Control-Allow-Credentials": {
+                "type": "string",
+                "default": "true"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "40"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"28-S2p4LaU/lqnXf91pFp3MvD/fAew\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Thu, 11 Jul 2019 21:38:31 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "examples": {
+              "application/json; charset=utf-8": {
+                "status": 401,
+                "message": "Authorization token"
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin, Accept-Encoding"
+              },
+              "Access-Control-Allow-Credentials": {
+                "type": "string",
+                "default": "true"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "40"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"28-S2p4LaU/lqnXf91pFp3MvD/fAew\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Thu, 11 Jul 2019 21:38:31 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/trips/?origin": {
+      "get": {
+        "description": "Enables users to view all trips based on origin filter",
+        "summary": "View all trips for a specified origin",
+        "tags": [
+          "User"
+        ],
+        "operationId": "TripsGetOrigin",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "origin",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "examples": [
+              {
+                "status": "success",
+                "data": [
+                    {
+                        "id": 1,
+                        "bus_id": 1,
+                        "origin": "Bayelsa",
+                        "destination": "USA",
+                        "trip_date": "2019-02-13T08:00:00.000Z",
+                        "fare": "20.00",
+                        "status": "active",
+                        "duration": "1hour 30min",
+                        "available_seats": [ 2, 3, 4, 5, 6 ]
+                    },
+                    {
+                      "id": 2,
+                      "bus_id": 4,
+                      "origin": "Bayelsa",
+                      "destination": "Lagos",
+                      "trip_date": "2019-02-13T08:00:00.000Z",
+                      "fare": "20.00",
+                      "status": "active",
+                      "duration": "1hour 30min",
+                      "available_seats": [ 2, 3, 4, 5, 6 ]
+                  }
+                  ]
+              },
+              {
+                "status": "success",
+                "message": "No trip(s) from origin China"
+              }
+            ],
+            "description": "Success",
+            "headers": {}
+          },
+          "400": {
+            "description": "",
+            "examples": {
+              "application/json; charset=utf-8": {
+                "status": 400,
+                "message": "Invalid token"
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin, Accept-Encoding"
+              },
+              "Access-Control-Allow-Credentials": {
+                "type": "string",
+                "default": "true"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "40"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"28-S2p4LaU/lqnXf91pFp3MvD/fAew\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Thu, 11 Jul 2019 21:38:31 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "examples": {
+              "application/json; charset=utf-8": {
+                "status": 401,
+                "message": "Authorization token"
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin, Accept-Encoding"
+              },
+              "Access-Control-Allow-Credentials": {
+                "type": "string",
+                "default": "true"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "40"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"28-S2p4LaU/lqnXf91pFp3MvD/fAew\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Thu, 11 Jul 2019 21:38:31 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/bus": {
       "post": {
         "description": "Enables Admin to create bus in way_farer_application",

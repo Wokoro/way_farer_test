@@ -69,7 +69,7 @@ export const checkBusAvailability = async ({ body }, res, next) => {
         ? `${availableBuses.length > 1 
           ? `Available Buses : ${availableBuses}` 
           : `Available Bus : ${availableBuses}`}`
-        : 'all buses are busy'}`
+        : 'all buses are unavailable'}`
     });
   }
   return res.status(400).json({
@@ -78,7 +78,7 @@ export const checkBusAvailability = async ({ body }, res, next) => {
       ? `${availableBuses.length > 1
         ? `Available Buses : ${availableBuses}` 
         : `Available Bus : ${availableBuses}`}`
-      : 'all buses are busy'}`
+      : 'No bus exist'}`
   });
 };
 

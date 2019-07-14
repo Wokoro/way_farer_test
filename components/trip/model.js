@@ -32,11 +32,11 @@ const Trip = {
         
     const { rows } = await db.query(query, [
       bus_id, 
-      origin, 
-      destination, 
-      trip_date, 
-      fare, 
-      status, 
+      `${origin.charAt(0).toUpperCase() + origin.slice(1)}`, 
+      `${destination.charAt(0).toUpperCase() + destination.slice(1)}`, 
+      trip_date,
+      fare,
+      status,
       duration, 
       available_seats
     ]);
@@ -44,6 +44,12 @@ const Trip = {
     return rows;
   },
   
+  getAllTrips: async () => {
+    const query = `SELECT * FROM trips`;
+    const { rows } = await db.query(query);
+    return rows;
+  },
+
   getTrip: async (column, value) => {
     const query = `SELECT * FROM trips 
     WHERE ${column} = $1`;

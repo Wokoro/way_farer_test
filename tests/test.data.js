@@ -8,6 +8,25 @@ export const req = {
   }
 };
 
+export const getAllTripReq = {
+  query: {
+    origin: false,
+    destination: false
+  }
+};
+export const getDestinationTripReq = {
+  query: {
+    origin: false,
+    destination: true
+  }
+};
+export const getOriginTripReq = {
+  query: {
+    origin: true,
+    destination: false
+  }
+};
+
 /**
  * @returns {Void} returns nothing
  */
@@ -90,3 +109,68 @@ export const signinRequestResponse = {
     token: 'eyJhbGJ9.d29rb3QHlhaG9vLmNvbQ.vMTbtNToMyfCFQCV00D-DzssbaxdygtA'
   }
 };
+
+export const allTripsResponse = [
+  {
+    id: 1,
+    bus_id: 1,
+    origin: "Bayelsa",
+    destination: "Delta",
+    trip_date: "2019-02-13T08:00:00.000Z",
+    fare: "20.00",
+    status: "active",
+    duration: "1hour 30min",
+    available_seats: [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ]
+  },
+  {
+    id: 2,
+    bus_id: 2,
+    origin: "Bayelsa",
+    destination: "Delta",
+    trip_date: "2019-02-13T08:00:00.000Z",
+    fare: "20.00",
+    status: "active",
+    duration: "1hour 30min",
+    available_seats: [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ]
+  }
+];

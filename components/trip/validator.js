@@ -10,7 +10,6 @@ import Trip from './model';
  */ 
 export const tripIdValidation = async (req, res, next) => {
   const { tripId } = req.params;
-  console.log('tripIdValidation : ', tripId);
   const result = await Trip.getTrip('id', Number(tripId));
   const [trip] = result;
   if (trip) {

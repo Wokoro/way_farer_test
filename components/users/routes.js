@@ -1,12 +1,12 @@
 import logger from '../../utils/logger';
-import { checkErrors } from '../../utils';
+import { checkErrors, passToken } from '../../utils';
 import { 
   userSignupInputValidations,
   userSigninInputValidations,
   checkUserExistence,
   checkUniqueness 
 } from './validator';
-import { signup, signin } from './controller';
+import { signup, signin, getTrips } from './controller';
 
 export default [
   {
@@ -31,8 +31,11 @@ export default [
     method: 'post'
   },
   {
-    path: '/trips',
-    handlers: [],
+    path: '/api/v1/trips',
+    handlers: [
+      passToken,
+      getTrips
+    ],
     method: 'get'
   }
 ];
