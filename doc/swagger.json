@@ -279,6 +279,167 @@
         }
       }
     },
+    "/api/v1/bookings": {
+      "post": {
+        "description": "Enables users to create bookings",
+        "summary": "Users booking creation",
+        "tags": [
+          "User"
+        ],
+        "operationId": "BookingsPost",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "trip_id",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "seat_number",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "example": {
+              "status": "success",
+              "data": {
+                  "booking_id": 9,
+                  "user_id": 1,
+                  "trip_id": 4,
+                  "bus_id": 5,
+                  "trip_date": "2019-02-13T08:00:00.000Z",
+                  "seat_number": 4,
+                  "first_name": "Douye",
+                  "last_name": "Wokoro",
+                  "email": "wokorosamuel@yahoo.com",
+                  "phone_number": "09066027359"
+              }
+            },
+            "description": "Success",
+            "headers": {}
+          },
+          "400": {
+            "description": "",
+            "examples": [
+              {
+              "application/json; charset=utf-8": {
+                "status": "Error",
+                "errors": "Trip do not exists"
+                }
+              },
+              {
+                "application/json; charset=utf-8": {
+                  "status": "Error",
+                  "errors": "Seat is taken already, \navailable seats: 13,15,16,17,18,20"
+                  }
+                }
+            ],
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin, Accept-Encoding"
+              },
+              "Access-Control-Allow-Credentials": {
+                "type": "string",
+                "default": "true"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "40"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"28-S2p4LaU/lqnXf91pFp3MvD/fAew\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Thu, 11 Jul 2019 21:38:31 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "title": "Bad Request",
+              "example": {
+                "status": 401,
+                "message": "Authorization Failed"
+              }
+            },
+            "examples": {
+              "application/json; charset=utf-8": {
+                "status": 401,
+                "message": "Authorization failed"
+              }
+            },
+            "headers": {
+              "X-Powered-By": {
+                "type": "string",
+                "default": "Express"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin, Accept-Encoding"
+              },
+              "Access-Control-Allow-Credentials": {
+                "type": "string",
+                "default": "true"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "40"
+              },
+              "ETag": {
+                "type": "string",
+                "default": "W/\"28-S2p4LaU/lqnXf91pFp3MvD/fAew\""
+              },
+              "Date": {
+                "type": "string",
+                "default": "Thu, 11 Jul 2019 21:38:31 GMT"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/trips": {
       "get": {
         "description": "Enables users to all trips",

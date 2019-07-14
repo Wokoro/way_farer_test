@@ -1,12 +1,17 @@
 import logger from '../../utils/logger';
 import { checkErrors, passToken } from '../../utils';
+import { tripIdValidation, checkTripActiveStat } from '../trip/validator';
+import checkSeatAvailability from '../booking/validation';
 import { 
   userSignupInputValidations,
   userSigninInputValidations,
   checkUserExistence,
-  checkUniqueness 
+  checkUniqueness,
+  passUserInfo
 } from './validator';
-import { signup, signin, getTrips } from './controller';
+import {
+  signup, signin, getTrips, createBooking 
+} from './controller';
 
 export default [
   {
@@ -37,5 +42,17 @@ export default [
       getTrips
     ],
     method: 'get'
+  },
+  {
+    path: '/api/v1/bookings',
+    handlers: [
+      passToken,
+      tripIdValidation,
+      passUserInfo,
+      checkTripActiveStat,
+      checkSeatAvailability,
+      createBooking
+    ],
+    method: 'post'
   }
 ];
