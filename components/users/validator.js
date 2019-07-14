@@ -93,7 +93,7 @@ export const checkUniqueness = async ({ body }, res, next) => {
 
 /**
  * Function to check if the user already exists on database
- * @param {*} param0 
+ * @param {*} req 
  * @param {*} res 
  * @param {*} next 
  * @returns {Void} returns nothing
@@ -120,5 +120,33 @@ export const checkUserExistence = async (req, res, next) => {
   return res.status(400).json({
     status: 'Error',
     errors: 'Wrong username or password'
+  });
+};
+
+/**
+ * Function to check if the user already exists on database
+ * @param {*} req 
+ * @param {*} res 
+ * @param {*} next 
+ * @returns {Void} returns nothing
+ */
+export const passUserInfo = async (req, res, next) => {
+  const { email: user_email } = req.body.token;
+  const result = await User.getUser('email', user_email);
+
+  if (result.length > 0) {
+    const {
+      user_id, email, first_name, last_name, phone_number
+    } = result[0];
+    req.body.user_id = user_id;
+    req.body.email = email;
+    req.body.first_name = first_name;
+    req.body.last_name = last_name;
+    req.body.phone_number = phone_number;
+    return next();
+  }
+  return res.status(400).json({
+    status: 'Error',
+    message: 'User do not exist, login required'
   });
 };
