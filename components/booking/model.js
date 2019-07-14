@@ -33,9 +33,13 @@ const Booking = {
     return rows;
   },
 
+<<<<<<< HEAD
   updateBooking: async (
     updateColum, updateValue, searchColumn, searchValue
   ) => {
+=======
+  updateBooking: async (updateColum, updateValue, searchColumn, searchValue) => {
+>>>>>>> 301e2d0... feature(create):enpoint for creating bookings
     const query = `UPDATE bookings 
     SET ${updateColum} = $1 
     WHERE ${searchColumn} = $2 
