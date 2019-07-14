@@ -9,18 +9,36 @@ import Trip from './model';
  * @return {Object} returns error message for error case
  */ 
 export const tripIdValidation = async (req, res, next) => {
-  const { tripId } = req.params;
-  const result = await Trip.getTrip('id', Number(tripId));
-  const [trip] = result;
-  if (trip) {
-    req.body.trip_status = trip.status;
-    return next();
+  const tripId = req.params.tripId || req.body.trip_id;
+  if (tripId) {
+    const result = await Trip.getTrip('id', Number(tripId));
+    const [trip] = result;
+    if (trip) {
+      req.body.trip_status = trip.status;
+      return next();
+    }
   }
+  
   return res.status(400).json({ 
     status: 'Error', errors: 'Trip do not exists'
   });
 };
 
+/** Functoin to validate trip existence
+ * @param {Object} req
+ * @param {Object} res
+ * @param {Object} next
+ * @return {Object} returns error message for error case
+ */ 
+export const checkTripActiveStat = async ({ body }, res, next) => {
+  const { trip_status } = body;
+  if (trip_status === 'cancelled') {
+    return res.status(400).json({ 
+      status: 'Error', errors: 'Sorry trip is currently cancelled'
+    });
+  }
+  return next();
+};
 
 /**
  * An array that holds all bus creation input validations

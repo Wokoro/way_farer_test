@@ -1,5 +1,6 @@
 import User from './model';
 import Trip from '../trip/model';
+import Booking from '../booking/model';
 
 /** Function to get all trips
  * @param {Object} req
@@ -47,7 +48,6 @@ export const getTrips = async (req, res) => {
   });
 }; 
 
-
 /** 
    * @param {Object} req
    * @param {Object} res
@@ -72,5 +72,53 @@ export const signin = async (req, res) => {
   return res.status(200).json({ 
     status: 'success', 
     data: { user_id, is_admin, token } 
+  });
+};
+
+/** 
+   * @param {Object} req
+   * @param {Object} res
+   * @returns {Object} return success message and user data
+  */
+export const createBooking = async (req, res) => {
+  const {
+    user_id, email, first_name, phone_number,
+    last_name, trip_id, trip_date, 
+    bus_id, seat_number = null, available_seats 
+  } = req.body;
+
+  const seatNumber = Number(seat_number);
+  
+  if (seatNumber) {
+    const updatedAvailableSeats = available_seats
+      .filter(value => !(value === seatNumber));
+
+    await Trip.update('available_seats', updatedAvailableSeats, 'id', trip_id);
+  }
+
+  const bookingResponse = await Booking.create(
+    user_id,
+    trip_id, 
+    seatNumber
+  );
+
+  const { id: booking_id } = bookingResponse[0];
+
+  const responseContruct = {
+    booking_id,
+    user_id,
+    trip_id: Number(trip_id),
+    bus_id,
+    trip_date,
+    seat_number,
+    first_name,
+    last_name,
+    email,
+    phone_number
+  };
+
+  res.status(200).json({
+    status: 'success',
+    data: responseContruct
   });
 };
