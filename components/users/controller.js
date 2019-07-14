@@ -84,6 +84,7 @@ export const createBooking = async (req, res) => {
   const {
     user_id, email, first_name, phone_number,
     last_name, trip_id, trip_date, 
+<<<<<<< HEAD
     bus_id, seat_number, available_seats 
   } = req.body;
 
@@ -94,6 +95,19 @@ export const createBooking = async (req, res) => {
     .filter(value => !(value === seatNumber));
 
   await Trip.update('available_seats', updatedAvailableSeats, 'id', trip_id);
+=======
+    bus_id, seat_number = null, available_seats 
+  } = req.body;
+
+  const seatNumber = Number(seat_number);
+  
+  if (seatNumber) {
+    const updatedAvailableSeats = available_seats
+      .filter(value => !(value === seatNumber));
+
+    await Trip.update('available_seats', updatedAvailableSeats, 'id', trip_id);
+  }
+>>>>>>> ft-create-booking-167279324
 
   const bookingResponse = await Booking.create(
     user_id,
@@ -109,7 +123,11 @@ export const createBooking = async (req, res) => {
     trip_id: Number(trip_id),
     bus_id,
     trip_date,
+<<<<<<< HEAD
     seat_number: Number(seat_number),
+=======
+    seat_number,
+>>>>>>> ft-create-booking-167279324
     first_name,
     last_name,
     email,

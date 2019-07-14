@@ -1,4 +1,9 @@
 node_modules
 .env
+<<<<<<< HEAD
 .nyc_output
 coverage
+=======
+.nyc_output/
+coverage/
+>>>>>>> ft-create-booking-167279324
