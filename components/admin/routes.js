@@ -10,7 +10,7 @@ import { createBus, createTrip, updateTrip } from './controller';
 
 export default [
   {
-    path: '/api/v1/bus',
+    path: '/bus',
     handlers: [
       passToken,
       checkIfAdmin,
@@ -22,7 +22,7 @@ export default [
     method: 'post',
   },
   {
-    path: '/api/v1/trip',
+    path: '/trip',
     handlers: [
       passToken,
       checkIfAdmin,
@@ -34,7 +34,7 @@ export default [
     method: 'post',
   },
   {
-    path: '/api/v1/trips/:trip_id',
+    path: '/trips/:trip_id',
     handlers: [
       passToken,
       checkIfAdmin,

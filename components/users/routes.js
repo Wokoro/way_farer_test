@@ -17,7 +17,7 @@ import {
 
 export default [
   {
-    path: '/api/v1/auth/signup',
+    path: '/auth/signup',
     handlers: [
       ...userSignupInputValidations,
       checkErrors,
@@ -27,7 +27,7 @@ export default [
     method: 'post',
   },
   {
-    path: '/api/v1/auth/signin',
+    path: '/auth/signin',
     handlers: [
       ...userSigninInputValidations, 
       checkErrors, 
@@ -37,7 +37,7 @@ export default [
     method: 'post'
   },
   {
-    path: '/api/v1/trips',
+    path: '/trips',
     handlers: [
       passToken,
       getTrips
@@ -45,7 +45,7 @@ export default [
     method: 'get'
   },
   {
-    path: '/api/v1/bookings',
+    path: '/bookings',
     handlers: [
       passToken,
       tripIdValidation,
@@ -57,7 +57,7 @@ export default [
     method: 'post'
   },
   {
-    path: '/api/v1/bookings',
+    path: '/bookings',
     handlers: [
       passToken,
       passUserInfo,
@@ -67,7 +67,7 @@ export default [
     method: 'get'
   },
   {
-    path: '/api/v1/bookings/:booking_id',
+    path: '/bookings/:booking_id',
     handlers: [
       passToken,
       passUserInfo,

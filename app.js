@@ -5,7 +5,11 @@ import errorHandlers from './middlewares/errors.handlers';
 import { middlewareLoader, routesLoader } from './utils';
 
 
-const router = express();
+const router = express.Router();
+
+const app = express();
+
+app.use('/api/v1', router);
 
 process.on('uncaughtException', (error) => {
   console.log(error);
@@ -19,4 +23,4 @@ routesLoader(routes, router);
 middlewareLoader(errorHandlers, router);
 
 
-export default router;
+export default app;

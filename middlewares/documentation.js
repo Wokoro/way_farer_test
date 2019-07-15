@@ -3,7 +3,7 @@ import swaggerConfig from '../doc/swagger.json';
 
 export default (router) => {
   router.use(
-    '/api/v1/swaggerdocs', 
+    '/swaggerdocs', 
     swaggerUi.serve, 
     swaggerUi.setup(swaggerConfig)
   );

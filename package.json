@@ -4,13 +4,13 @@
   "description": "WayFarer is a public bus transportation booking API, that would be used to power front-end apps.",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production npm run setupdb && cross-env NODE_ENV=production nodemon index.js --exec babel-node",
+    "start": "cross-env NODE_ENV=production nodemon index.js --exec babel-node",
     "test": "cross-env NODE_ENV=test nyc mocha ./tests/*.test.js --exit",
     "lint": "eslint --fix ./**/*.js",
     "lint-md": "remark . --output",
-    "setupdb": "babel-node database/setupDB.js",
-    "dropdb": "cross-env NODE_ENV=production babel-node database/dropDB.js",
-    "seedDb": "babel-node database/seedDB.js",
+    "setupdb": "cross-env NODE_ENV=production babel-node ./database/setupDB.js",
+    "dropdb": "cross-env NODE_ENV=production babel-node ./database/dropDB.js",
+    "seedDb": "babel-node ./database/seedDB.js",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "snyk-protect": "snyk protect",
     "prepare": "npm run snyk-protect"
