@@ -76,7 +76,7 @@ describe('test for viewing filtered trips', () => {
         await getTrips(getDestinationTripReq, res);
         [apiResponse] = res.json.getCall(0).args;
       });
-    
+  
       after(() => {
         sinon.restore();
       });
