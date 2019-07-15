@@ -5,7 +5,7 @@ import { getTrips } from '../components/users/controller';
 import Trip from '../components/trip/model';
 
 import {
-  res, req
+  res, getAllTripReq
 } from './test.data';
 
 chai.should();
@@ -21,7 +21,7 @@ describe('tests for successful trips view: GET /trips', () => {
     sinon.stub(res, 'status').returnsThis();
     sinon.stub(res, 'json').returnsThis();
     sinon.stub(Trip, 'getAllTrips').returns([{}]);
-    await getTrips(req, res);
+    await getTrips(getAllTripReq, res);
     [apiResponse] = res.json.getCall(0).args;
   });
   
@@ -44,7 +44,7 @@ describe('tests for unsuccessful trips view: GET /trips', () => {
     sinon.stub(res, 'status').returnsThis();
     sinon.stub(res, 'json').returnsThis();
     sinon.stub(Trip, 'getAllTrips').returns([]);
-    await getTrips(req, res);
+    await getTrips(getAllTripReq, res);
     [apiResponse] = res.json.getCall(0).args;
   });
   
