@@ -115,6 +115,34 @@ const createAdmin = async (
   ]);
 };
 
+
+/**
+ * 
+ * @param {String} number_plate 
+ * @param {String} manufacturer 
+ * @param {String} model 
+ * @param {String} year 
+ * @param {Number} capacity 
+ * @return {Void} null
+ */
+const createBuses = async (number_plate, manufacturer, model,
+  year, capacity
+) => {
+  const query = `INSERT INTO buses(
+    number_plate, 
+    manufacturer,
+    model,
+    year, 
+    capacity,
+    available
+    )
+    values($1, $2, $3, $4, $5, $6)`;
+      
+  await db.query(query, [
+    number_plate, manufacturer, model, year, Number(capacity), true
+  ]);
+};
+
 /**
  * Function to create database table
  * @param {String[]} dbQueries for creating databases
@@ -134,6 +162,9 @@ export const createTables = async () => {
     'samsizzy199',
     'No. 38 Arizonal street yenezue-gene, Bayelsa state'
   );
+  createBuses('123 ABD', 'Honda', 'BMW', '201S', 11);
+  createBuses('324 ASD', 'Honda', 'BTW', '201S', 11);
+  createBuses('343 ABD', 'Honda', 'SKE', '201S', 11);
 };
 
 /**
