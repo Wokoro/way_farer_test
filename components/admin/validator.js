@@ -17,7 +17,7 @@ const checkIfAdmin = async (req, res, next) => {
     return next();
   }
   
-  return res.status(401).json({
+  return res.status(400).json({
     status: 'Error',
     error: 'Authorization Failed'
   });

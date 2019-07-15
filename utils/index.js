@@ -67,8 +67,8 @@ export const passToken = async (req, res, next) => {
       return res.status(400).json({ status: 400, error: 'Invalid token' });
     }
   }
-  return res.status(401).json({ 
-    status: 401, 
+  return res.status(400).json({ 
+    status: 400, 
     error: 'Authorization Failed' 
   });  
 };

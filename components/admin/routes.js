@@ -2,8 +2,7 @@ import checkIfAdmin from './validator';
 import { tripCreationValidation, tripIdValidation } from '../trip/validator';
 import {
   busCreationValidation,
-  checkUniqueness, 
-  checkBusAvailability 
+  checkUniqueness
 } from '../bus/validator';
 import { checkErrors, passToken } from '../../utils';
 import { createBus, createTrip, updateTrip } from './controller';
@@ -22,13 +21,12 @@ export default [
     method: 'post',
   },
   {
-    path: '/trip',
+    path: '/trips',
     handlers: [
       passToken,
       checkIfAdmin,
       ...tripCreationValidation, 
       checkErrors,
-      checkBusAvailability,
       createTrip
     ],
     method: 'post',

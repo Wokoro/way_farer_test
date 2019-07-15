@@ -56,13 +56,12 @@ describe('tests for unsuccessful viewing of all trips: GET /trips', () => {
     sinon.restore();
   });
   
-  it('it should return 200 status', async () => {
-    expect(res.status).to.have.been.calledWith(200);
+  it('it should return 400 status', async () => {
+    expect(res.status).to.have.been.calledWith(400);
   });
 
   it('it should return trip unavailable message', async () => {
     expect(apiResponse.message).to.not.be.null;
-    expect(apiResponse.message).to.be.equals('No trip available');
   });
 });
 

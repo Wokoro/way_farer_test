@@ -45,7 +45,7 @@ const
         origin VARCHAR(128) NOT NULL,
         destination VARCHAR(128) NOT NULL,
         trip_date DATE NOT NULL DEFAULT CURRENT_DATE,
-        fare INT NOT NULL,
+        fare FLOAT NOT NULL,
         status VARCHAR(128) NOT NULL,
         duration VARCHAR(128),
         available_seats INTEGER[]

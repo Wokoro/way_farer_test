@@ -61,6 +61,6 @@ describe('tests for unsuccessful booking deletion: DELETE /bookings', () => {
   });
   
   it('it should return error message', async () => {
-    expect(apiResponse).to.have.property('message');
+    expect(apiResponse).to.have.property('error');
   });
 });

@@ -101,10 +101,10 @@ export const createBooking = async (req, res) => {
     first_name, last_name, email
   );
 
-  const { id: booking_id } = bookingResponse[0];
+  const { id } = bookingResponse[0];
 
   const responseContruct = {
-    booking_id,
+    id,
     user_id,
     trip_id: Number(trip_id),
     bus_id,

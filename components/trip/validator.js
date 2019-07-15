@@ -73,18 +73,8 @@ export const tripCreationValidation = [
     .exists(),
 
   check('fare', 'Trip fare must be present')
-    .isFloat()
     .not().isEmpty()
     .escape()
-    .trim()
-    .exists(),
-
-  check('status', 'Trip status must be present')
-    .isIn(['active', 'cancel'])
-    .not()
-    .isEmpty()
-    .escape()
-    .trim()
     .exists()
 ];
  

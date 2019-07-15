@@ -22,9 +22,27 @@ export const createBus = async (req, res) => {
   */
 export const createTrip = async (req, res) => {
   const [response] = await Trip.create(req);
+  const { 
+    id, bus_id, origin, destination, trip_date, 
+    fare, 
+    status, 
+    duration, 
+    available_seats
+  } = response;
+
   return res.status(200).json({
     status: 'success',
-    data: response
+    data: {
+      id, 
+      bus_id,
+      origin, 
+      destination,
+      trip_date,
+      fare,
+      status,
+      duration,
+      available_seats
+    }
   });
 };
 
