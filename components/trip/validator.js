@@ -20,7 +20,7 @@ export const tripIdValidation = async (req, res, next) => {
   }
   
   return res.status(400).json({ 
-    status: 'Error', errors: 'Trip do not exists'
+    status: 'Error', error: 'Trip do not exists'
   });
 };
 
@@ -34,7 +34,7 @@ export const checkTripActiveStat = async ({ body }, res, next) => {
   const { trip_status } = body;
   if (trip_status === 'cancelled') {
     return res.status(400).json({ 
-      status: 'Error', errors: 'Sorry trip is currently cancelled'
+      status: 'Error', error: 'Sorry trip is currently cancelled'
     });
   }
   return next();

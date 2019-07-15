@@ -95,7 +95,7 @@ export const checkErrors = (req, res, next) => {
     errorsHolder.push(error.msg);
   }
   if (!errors.isEmpty()) {
-    return res.status(400).json({ status: 'Error', errors: errorsHolder });
+    return res.status(400).json({ status: 'Error', error: errorsHolder });
   }
   next();
 };

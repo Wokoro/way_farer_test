@@ -19,7 +19,7 @@ const checkIfAdmin = async (req, res, next) => {
   
   return res.status(401).json({
     status: 'Error',
-    errors: 'Authorization Failed'
+    error: 'Authorization Failed'
   });
 };
 

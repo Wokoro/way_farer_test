@@ -18,7 +18,7 @@ const userTableCreateQuery = `
         email VARCHAR(128) NOT NULL UNIQUE,
         first_name VARCHAR(128) NOT NULL,
         last_name VARCHAR(128) NOT NULL,
-        sex VARCHAR(128) NOT NULL,
+        sex VARCHAR(128),
         phone_number VARCHAR(128),
         password VARCHAR(128) NOT NULL,
         address VARCHAR(128),

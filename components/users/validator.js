@@ -86,7 +86,7 @@ export const checkUniqueness = async ({ body }, res, next) => {
   if (result.length > 0) {
     return res.status(400).json({
       status: 'Error',
-      errors: 'User already exists'
+      error: 'User already exists'
     });
   }
   next();
@@ -112,7 +112,7 @@ export const checkUserExistence = async (req, res, next) => {
     if (!userPassword) {
       return res.status(400).json({
         status: 'Error',
-        errors: 'Wrong username or password'
+        error: 'Wrong username or password'
       });
     }
     [req.body] = result;
@@ -120,7 +120,7 @@ export const checkUserExistence = async (req, res, next) => {
   }
   return res.status(400).json({
     status: 'Error',
-    errors: 'Wrong username or password'
+    error: 'Wrong username or password'
   });
 };
 

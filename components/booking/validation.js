@@ -27,7 +27,7 @@ export const checkSeatAvailability = async (req, res, next) => {
 
     return res.status(400).json({
       status: 'Error',
-      errors: `Seat is taken already, 
+      error: `Seat is taken already, 
       available seats: ${result.available_seats}
       `
     });

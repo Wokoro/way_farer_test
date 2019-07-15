@@ -65,7 +65,7 @@ export const checkBusAvailability = async ({ body }, res, next) => {
     }
     return res.status(400).json({
       status: 'Error',
-      errors: `$Bus with id = {bus_id},
+      error: `$Bus with id = {bus_id},
        is unavailable, ${availableBuses.length > 0 
     ? `${availableBuses.length > 1 
       ? `Available Buses : ${availableBuses}` 
@@ -75,7 +75,7 @@ export const checkBusAvailability = async ({ body }, res, next) => {
   }
   return res.status(400).json({
     status: 'Error',
-    errors: `$ Bus with id = {bus_id},
+    error: `$ Bus with id = {bus_id},
      does not exist, ${availableBuses.length > 0
     ? `${buses.length > 1
       ? `Available Buses : ${availableBuses}` 
@@ -99,7 +99,7 @@ export const checkUniqueness = async ({ body }, res, next) => {
   if (result.length > 0) {
     return res.status(400).json({
       status: 'Error',
-      errors: 'Bus already exists'
+      error: 'Bus already exists'
     });
   }
   next();
