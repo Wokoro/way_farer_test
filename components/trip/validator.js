@@ -45,7 +45,7 @@ export const checkTripActiveStat = async ({ body }, res, next) => {
  */
 export const tripCreationValidation = [
   check('bus_id', 'Trip origin must be present')
-    .isString()
+    .isNumeric()
     .not().isEmpty()
     .escape()
     .trim()

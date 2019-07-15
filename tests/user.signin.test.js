@@ -82,7 +82,7 @@ describe('tests for unsuccessful signin: POST /auth/signin', () => {
       expect(res.status).to.have.been.calledWith(400);
     });
     it('it should return error message', async () => {
-      expect(apiResponse).to.have.property('errors');
+      expect(apiResponse).to.have.property('error');
     });
   });
 });
