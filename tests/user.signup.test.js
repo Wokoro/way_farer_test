@@ -86,10 +86,3 @@ describe('tests for unsuccessful user signup: POST /auth/signup', () => {
     });
   });
 });
-
-
-// expect(res).to.have.status(201);
-// expect(res.body).to.be.a('object');
-// 
-// expect(res.body.data['0']).to.not.include.key('password');
-// expect(err).to.be.null;
