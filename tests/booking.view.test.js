@@ -1,7 +1,7 @@
 import sinon from 'sinon';
 import chai from 'chai';
 import sinonChai from 'sinon-chai';
-import { createBooking, viewBooking } from '../components/users/controller';
+import { viewBooking } from '../components/users/controller';
 import Booking from '../components/booking/model';
 import { 
 } from '../components/trip/validator';
@@ -19,7 +19,7 @@ const { expect } = chai;
 let apiResponse = {};
 
 
-describe('tests for successful return of all booking for admin: GET /bookings', () => {  
+describe('tests for admin booking view: GET /bookings', () => {  
   before(async () => {
     sinon.stub(res, 'status').returnsThis();
     sinon.stub(res, 'json').returnsThis();
@@ -42,7 +42,7 @@ describe('tests for successful return of all booking for admin: GET /bookings', 
   });
 });
 
-describe('tests for successful return of all booking for admin: GET /bookings', () => {  
+describe('tests for none admin booking view: GET /bookings', () => {  
   before(async () => {
     sinon.stub(res, 'status').returnsThis();
     sinon.stub(res, 'json').returnsThis();
@@ -65,7 +65,7 @@ describe('tests for successful return of all booking for admin: GET /bookings', 
   });
 });
 
-describe('tests for successful return no booking message for empty booking: GET /bookings', () => {  
+describe('tests for no empty booking: GET /bookings', () => {  
   before(async () => {
     sinon.stub(res, 'status').returnsThis();
     sinon.stub(res, 'json').returnsThis();

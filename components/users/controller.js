@@ -109,7 +109,7 @@ export const createBooking = async (req, res) => {
     trip_id: Number(trip_id),
     bus_id,
     trip_date,
-    seat_number: Number(seat_number),
+    seat_number,
     first_name,
     last_name,
     email,

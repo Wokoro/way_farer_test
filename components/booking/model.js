@@ -47,17 +47,6 @@ const Booking = {
     RETURNING *`;
     const { rows } = await db.query(query, [updateValue, searchValue]);
     return rows;
-  },
-
-  getUserBooking: async (user_id) => {
-    const userQuery = `SELECT user_id, first_name, last_name, email
-    FROM users WHERE user_id = $1`;
-
-    const bookingQuery = 'SELECT * FROM bookings WHERE user_id = $1';
-    
-    const tripQuery = `SELECT id, bus_id, trip_date
-     FROM trips WHERE id = $1
-    `;
   }
 };
 
