@@ -148,6 +148,6 @@ export const passUserInfo = async (req, res, next) => {
   }
   return res.status(400).json({
     status: 'Error',
-    message: 'User do not exist, login required'
+    error: 'User do not exist, login required'
   });
 };

@@ -17,9 +17,9 @@ export const getTrips = async (req, res) => {
         data: trips
       }); 
     }
-    return res.status(200).json({
+    return res.status(400).json({
       status: 'success',
-      message: `No trip(s) from origin ${origin}`
+      error: `No trip(s) from origin ${origin}`
     });
   }
   if (destination) {
@@ -30,9 +30,9 @@ export const getTrips = async (req, res) => {
         data: trips
       });
     }
-    return res.status(200).json({
+    return res.status(400).json({
       status: 'success',
-      message: `No trip(s)to destination ${destination}`
+      error: `No trip(s)to destination ${destination}`
     });
   }
   const trips = await Trip.getAllTrips();
@@ -42,9 +42,9 @@ export const getTrips = async (req, res) => {
       data: trips
     });
   }
-  return res.status(200).json({
+  return res.status(400).json({
     status: 'success',
-    message: 'No trip available'
+    error: 'No trip available'
   });
 }; 
 
@@ -145,7 +145,7 @@ export const viewBooking = async (req, res) => {
   }
   return res.status(200).json({
     status: 'success',
-    message: 'No booking available'
+    error: 'No booking available'
   });
 };
 
@@ -168,6 +168,6 @@ export const deleteBooking = async (req, res) => {
   }
   return res.status(400).json({
     status: 'Error',
-    message: 'Unable to delete booking'
+    error: 'Unable to delete booking'
   });
 };

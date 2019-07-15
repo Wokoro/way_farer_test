@@ -85,15 +85,7 @@ export const tripCreationValidation = [
     .isEmpty()
     .escape()
     .trim()
-    .exists(),
-  
-  check('duration', 'Trip duration must be present')
-    .optional()
-    .isString()
-    .not()
-    .isEmpty()
-    .escape()
-    .trim()
+    .exists()
 ];
  
 // };

@@ -61,7 +61,6 @@ export default [
     handlers: [
       passToken,
       passUserInfo,
-
       viewBooking
     ],
     method: 'get'
