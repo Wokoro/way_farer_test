@@ -83,6 +83,24 @@ export const createBookingReq = {
   }
 };
 
+export const viewBookingReq = {
+  body: {
+    user_id: 1,
+    token: {
+      is_admin: true
+    }
+  },
+};
+
+export const viewUserBookingReq = {
+  body: {
+    user_id: 1,
+    token: {
+      is_admin: false
+    }
+  },
+};
+
 export const checkTripActiveStatReq = {
   body: {
     trip_status: 'cancelled'

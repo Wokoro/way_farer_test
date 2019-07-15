@@ -6,16 +6,21 @@ import db from '../../database';
  * @returns {Void} null
 */
 const Booking = {
-  create: async (user_id, trip_id, seat_number) => {
+  create: async (
+    user_id, trip_id, bus_id,
+    trip_date, seat_number,
+    first_name, last_name, email
+  ) => {
     const query = `INSERT INTO bookings(
-      user_id,
-      trip_id, 
-      seat_number
+      user_id, trip_id, bus_id, trip_date,
+      seat_number, first_name, last_name, email
       )
-      values($1, $2, $3) RETURNING *`;
+      values($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`;
         
     const { rows } = await db.query(query, [
-      user_id, trip_id, seat_number, 
+      user_id, trip_id, bus_id,
+      trip_date, seat_number,
+      first_name, last_name, email 
     ]);
     return rows;
   },
@@ -33,7 +38,9 @@ const Booking = {
     return rows;
   },
 
-  updateBooking: async (updateColum, updateValue, searchColumn, searchValue) => {
+  updateBooking: async (
+    updateColum, updateValue, searchColumn, searchValue
+  ) => {
     const query = `UPDATE bookings 
     SET ${updateColum} = $1 
     WHERE ${searchColumn} = $2 
@@ -41,7 +48,6 @@ const Booking = {
     const { rows } = await db.query(query, [updateValue, searchValue]);
     return rows;
   }
-
 };
 
 export default Booking;

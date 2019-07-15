@@ -84,18 +84,6 @@ export const createBooking = async (req, res) => {
   const {
     user_id, email, first_name, phone_number,
     last_name, trip_id, trip_date, 
-<<<<<<< HEAD
-    bus_id, seat_number, available_seats 
-  } = req.body;
-
-
-  const seatNumber = Number(seat_number);
-  
-  const updatedAvailableSeats = available_seats
-    .filter(value => !(value === seatNumber));
-
-  await Trip.update('available_seats', updatedAvailableSeats, 'id', trip_id);
-=======
     bus_id, seat_number = null, available_seats 
   } = req.body;
 
@@ -107,12 +95,11 @@ export const createBooking = async (req, res) => {
 
     await Trip.update('available_seats', updatedAvailableSeats, 'id', trip_id);
   }
->>>>>>> ft-create-booking-167279324
 
   const bookingResponse = await Booking.create(
-    user_id,
-    trip_id, 
-    seatNumber
+    user_id, trip_id, bus_id, 
+    trip_date, seat_number, 
+    first_name, last_name, email
   );
 
   const { id: booking_id } = bookingResponse[0];
@@ -123,11 +110,7 @@ export const createBooking = async (req, res) => {
     trip_id: Number(trip_id),
     bus_id,
     trip_date,
-<<<<<<< HEAD
-    seat_number: Number(seat_number),
-=======
     seat_number,
->>>>>>> ft-create-booking-167279324
     first_name,
     last_name,
     email,
@@ -137,5 +120,32 @@ export const createBooking = async (req, res) => {
   res.status(200).json({
     status: 'success',
     data: responseContruct
+  });
+};
+
+/**
+ * @param {*} req 
+ * @param {*} res 
+ * @returns {Void} returns nothing
+ */
+export const viewBooking = async (req, res) => {
+  const { is_admin } = req.body.token;
+  const { user_id } = req.body;
+  let result = [];
+
+  if (is_admin) {
+    result = await Booking.getAllBookings();
+  } else {
+    result = await Booking.getBooking('user_id', user_id);
+  }
+  if (result.length > 0) {
+    return res.status(200).json({
+      status: 'success',
+      data: result
+    });
+  }
+  return res.status(200).json({
+    status: 'success',
+    message: 'No booking available'
   });
 };
