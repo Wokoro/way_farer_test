@@ -17,7 +17,7 @@ const { expect } = chai;
 let apiResponse = {};
 
 
-describe('tests for successful trip cancellaton: PATCH /trips/:tripId', () => {  
+describe('tests for trip cancellaton: PATCH /trips/:tripId', () => {  
   before(async () => {
     sinon.stub(res, 'status').returnsThis();
     sinon.stub(res, 'json').returnsThis();

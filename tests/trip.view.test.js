@@ -67,7 +67,7 @@ describe('tests for unsuccessful viewing of all trips: GET /trips/', () => {
 });
 
 describe('test for viewing filtered trips', () => {
-  describe('tests for successful viewing of filtered destination trips: GET /trips/?destination={value}', () => {  
+  describe('tests for trips view: GET /trips/?destination={value}', () => {  
     before(async () => {
       sinon.stub(res, 'status').returnsThis();
       sinon.stub(res, 'json').returnsThis();
@@ -89,7 +89,7 @@ describe('test for viewing filtered trips', () => {
       expect(apiResponse.data).to.be.an('array');
     });
   });
-  describe('tests for successful viewing of filtered origin trips: GET /trips/?origin={value}', () => {  
+  describe('tests for trips view: GET /trips/?origin={value}', () => {  
     before(async () => {
       sinon.stub(res, 'status').returnsThis();
       sinon.stub(res, 'json').returnsThis();

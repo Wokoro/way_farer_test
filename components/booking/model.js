@@ -33,7 +33,9 @@ const Booking = {
     return rows;
   },
 
-  updateBooking: async (updateColum, updateValue, searchColumn, searchValue) => {
+  updateBooking: async (
+    updateColum, updateValue, searchColumn, searchValue
+  ) => {
     const query = `UPDATE bookings 
     SET ${updateColum} = $1 
     WHERE ${searchColumn} = $2 

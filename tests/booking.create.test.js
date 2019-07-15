@@ -88,7 +88,7 @@ describe('tests for successful booking creation: POST /bookings', () => {
   });
 });
 
-describe('tests for invalid trip id during trip booking: POST /bookings', () => {  
+describe('tests for invalid trip id: POST /bookings', () => {  
   before(async () => {
     sinon.stub(res, 'status').returnsThis();
     sinon.stub(res, 'json').returnsThis();
@@ -132,7 +132,7 @@ describe('tests for booking a trip that is cancelled: POST /bookings', () => {
   });
 });
 
-describe('tests for booking a trip with an already occupied seat: POST /bookings', () => {  
+describe('tests for booking already occupied seat: POST /bookings', () => {  
   before(async () => {
     sinon.stub(res, 'status').returnsThis();
     sinon.stub(res, 'json').returnsThis();
