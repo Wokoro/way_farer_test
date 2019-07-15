@@ -20,31 +20,31 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">20% </span>
+        <span class="strong">80% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>3/15</span>
+        <span class='fraction'>12/15</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">75% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/8</span>
+        <span class='fraction'>6/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/2</span>
+        <span class='fraction'>2/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">20% </span>
+        <span class="strong">80% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>3/15</span>
+        <span class='fraction'>12/15</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -166,17 +166,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -188,9 +188,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -274,18 +274,18 @@ import Trip from './model';
  * @param {Object} next
  * @return {Object} returns error message for error case
  */ 
-export const tripIdValidation = <span class="fstat-no" title="function not covered" >as</span>ync (req, res, next) =&gt; {
-  const tripId = <span class="cstat-no" title="statement not covered" >req.params.tripId || req.body.trip_id;</span>
-<span class="cstat-no" title="statement not covered" >  if (tripId) {</span>
-    const result = <span class="cstat-no" title="statement not covered" >await Trip.getTrip('id', Number(tripId));</span>
-    const [trip] = <span class="cstat-no" title="statement not covered" >result;</span>
-<span class="cstat-no" title="statement not covered" >    if (trip) {</span>
+export const tripIdValidation = async (req, res, next) =&gt; {
+  const tripId = req.params.tripId || req.body.trip_id;
+  if (tripId) {
+    const result = await Trip.getTrip('id', Number(tripId));
+    const [trip] = result;
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (trip) {
 <span class="cstat-no" title="statement not covered" >      req.body.trip_status = trip.status;</span>
 <span class="cstat-no" title="statement not covered" >      return next();</span>
     }
   }
   
-<span class="cstat-no" title="statement not covered" >  return res.status(400).json({ </span>
+  return res.status(400).json({ 
     status: 'Error', errors: 'Trip do not exists'
   });
 };
@@ -296,10 +296,10 @@ export const tripIdValidation = <span class="fstat-no" title="function not cover
  * @param {Object} next
  * @return {Object} returns error message for error case
  */ 
-export const checkTripActiveStat = <span class="fstat-no" title="function not covered" >as</span>ync ({ body }, res, next) =&gt; {
-  const { trip_status } = <span class="cstat-no" title="statement not covered" >body;</span>
-<span class="cstat-no" title="statement not covered" >  if (trip_status === 'cancelled') {</span>
-<span class="cstat-no" title="statement not covered" >    return res.status(400).json({ </span>
+export const checkTripActiveStat = async ({ body }, res, next) =&gt; {
+  const { trip_status } = body;
+  <span class="missing-if-branch" title="else path not taken" >E</span>if (trip_status === 'cancelled') {
+    return res.status(400).json({ 
       status: 'Error', errors: 'Sorry trip is currently cancelled'
     });
   }
@@ -307,7 +307,7 @@ export const checkTripActiveStat = <span class="fstat-no" title="function not co
 };
 &nbsp;
 /**
- * An array that holds all bus creation input validations
+ * An array that holds all trip creation input validations
  */
 export const tripCreationValidation = [
   check('number_plate', 'Trip origin must be present')
@@ -379,7 +379,7 @@ export const tripCreationValidation = [
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Jul 14 2019 22:26:30 GMT-0700 (Pacific Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Jul 15 2019 01:37:36 GMT-0700 (Pacific Daylight Time)
 </div>
 </div>
 <script src="..\..\prettify.js"></script>

@@ -1,7 +1,10 @@
 import logger from '../../utils/logger';
 import { checkErrors, passToken } from '../../utils';
+<<<<<<< HEAD
 import { tripIdValidation, checkTripActiveStat } from '../trip/validator';
 import checkSeatAvailability from '../booking/validation';
+=======
+>>>>>>> 7e4422427e3b36724d677cbffd5f6cf0fdc474c8
 import { 
   userSignupInputValidations,
   userSigninInputValidations,
@@ -9,9 +12,13 @@ import {
   checkUniqueness,
   passUserInfo
 } from './validator';
+<<<<<<< HEAD
 import {
   signup, signin, getTrips, createBooking, viewBooking
 } from './controller';
+=======
+import { signup, signin, getTrips } from './controller';
+>>>>>>> 7e4422427e3b36724d677cbffd5f6cf0fdc474c8
 
 export default [
   {

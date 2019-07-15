@@ -438,9 +438,7 @@
             }
           }
         }
-      }
-    },
-    "/api/v1/bookings": {
+      },
       "get": {
         "description": "Enables users view bookings",
         "summary": "Users booking view",
@@ -1354,7 +1352,13 @@
             "examples":[ {
               "application/json; charset=utf-8": {
                 "status": "Error",
-                "message": "4370 BYS is unavailable, \nall buses are busy"
+                "message": "4370 BYS is unavailable, \nno bus is available"
+              }
+            },
+            {
+              "application/json; charset=utf-8": {
+                "status": "Error",
+                "message": "4370 BYS is unavailable, \nno "
               }
             },
             {

@@ -43,7 +43,7 @@ describe('tests for successful viewing of all trips: GET /trips/', () => {
   });
 });
 
-describe('tests for unsuccessful viewing of all trips: GET /trips/', () => {  
+describe('tests for unsuccessful viewing of all trips: GET /trips', () => {  
   before(async () => {
     sinon.stub(res, 'status').returnsThis();
     sinon.stub(res, 'json').returnsThis();

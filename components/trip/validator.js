@@ -41,7 +41,7 @@ export const checkTripActiveStat = async ({ body }, res, next) => {
 };
 
 /**
- * An array that holds all bus creation input validations
+ * An array that holds all trip creation input validations
  */
 export const tripCreationValidation = [
   check('number_plate', 'Trip origin must be present')

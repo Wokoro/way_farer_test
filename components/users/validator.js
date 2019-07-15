@@ -74,9 +74,9 @@ export const userSigninInputValidations = [
 
 /**
  * Function to check if the user already exists on database
- * @param {*} param0 
- * @param {*} res 
- * @param {*} next 
+ * @param {Object} param0 
+ * @param {Object} res 
+ * @param {Object} next 
  * @returns {Void} returns nothing
  */
 export const checkUniqueness = async ({ body }, res, next) => {
@@ -93,9 +93,9 @@ export const checkUniqueness = async ({ body }, res, next) => {
 
 /**
  * Function to check if the user already exists on database
- * @param {*} req 
- * @param {*} res 
- * @param {*} next 
+ * @param {Object} req 
+ * @param {Object} res 
+ * @param {Object} next 
  * @returns {Void} returns nothing
  */
 export const checkUserExistence = async (req, res, next) => {
