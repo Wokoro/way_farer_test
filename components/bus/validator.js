@@ -50,8 +50,8 @@ export const busCreationValidation = [
  */
 export const checkBusAvailability = async ({ body }, res, next) => {
   // const { number_plate } = body;
-  const { number_plate } = body;
-  const [bus] = await Bus.getBus('number_plate', number_plate);
+  const { bus_id } = body;
+  const [bus] = await Bus.getBus('id', bus_id);
 
   const buses = await Bus.getBuses();
   const availableBuses = buses
@@ -65,20 +65,22 @@ export const checkBusAvailability = async ({ body }, res, next) => {
     }
     return res.status(400).json({
       status: 'Error',
-      errors: `${number_plate} is unavailable, ${availableBuses.length > 0 
-        ? `${availableBuses.length > 1 
-          ? `Available Buses : ${availableBuses}` 
-          : `Available Bus : ${availableBuses}`}`
-        : 'no bus is available'}`
+      errors: `$Bus with id = {bus_id},
+       is unavailable, ${availableBuses.length > 0 
+    ? `${availableBuses.length > 1 
+      ? `Available Buses : ${availableBuses}` 
+      : `Available Bus : ${availableBuses}`}`
+    : 'no bus is available'}`
     });
   }
   return res.status(400).json({
     status: 'Error',
-    errors: `${number_plate} does not exist, ${availableBuses.length > 0
-      ? `${buses.length > 1
-        ? `Available Buses : ${availableBuses}` 
-        : `Available Bus : ${availableBuses}`}`
-      : 'No bus is created'}`
+    errors: `$ Bus with id = {bus_id},
+     does not exist, ${availableBuses.length > 0
+    ? `${buses.length > 1
+      ? `Available Buses : ${availableBuses}` 
+      : `Available Bus : ${availableBuses}`}`
+    : 'No bus is created'}`
   });
 };
 

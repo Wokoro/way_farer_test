@@ -19,9 +19,9 @@ const userTableCreateQuery = `
         first_name VARCHAR(128) NOT NULL,
         last_name VARCHAR(128) NOT NULL,
         sex VARCHAR(128) NOT NULL,
-        phone_number VARCHAR(128) NOT NULL,
+        phone_number VARCHAR(128),
         password VARCHAR(128) NOT NULL,
-        address VARCHAR(128) NOT NULL,
+        address VARCHAR(128),
         token VARCHAR(255) NOT NULL,
         is_admin BOOLEAN NOT NULL
     )`;
@@ -34,7 +34,7 @@ const busTableCreateQuery = `
         model VARCHAR(128) NOT NULL,
         year VARCHAR(128) NOT NULL,
         capacity INT NOT NULL,
-        available BOOL NOT NULL
+        available BOOL
     )`;
 
 const 
@@ -47,8 +47,8 @@ const
         trip_date DATE NOT NULL DEFAULT CURRENT_DATE,
         fare NUMERIC NOT NULL,
         status VARCHAR(128) NOT NULL,
-        duration VARCHAR(128) NOT NULL,
-        available_seats INTEGER[] NOT NULL
+        duration VARCHAR(128),
+        available_seats INTEGER[]
     )`;
 
 const bookingTableCreateQuery = `
@@ -56,7 +56,7 @@ const bookingTableCreateQuery = `
         id SERIAL PRIMARY KEY UNIQUE,
         user_id INT REFERENCES users (user_id),
         trip_id INT REFERENCES trips (id),
-        bus_id INT NOT NULL,
+        bus_id INT,
         trip_date DATE NOT NULL,
         first_name VARCHAR(128),
         last_name VARCHAR(128),
