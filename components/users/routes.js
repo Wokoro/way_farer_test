@@ -1,7 +1,9 @@
-import logger from '../../utils/logger';
 import { checkErrors, passToken } from '../../utils';
 import { tripIdValidation, checkTripActiveStat } from '../trip/validator';
-import checkSeatAvailability from '../booking/validation';
+import {
+  checkSeatAvailability, 
+  checkBookingAvailability 
+} from '../booking/validation';
 import { 
   userSignupInputValidations,
   userSigninInputValidations,
@@ -10,14 +12,13 @@ import {
   passUserInfo
 } from './validator';
 import {
-  signup, signin, getTrips, createBooking, viewBooking
+  signup, signin, getTrips, createBooking, viewBooking, deleteBooking
 } from './controller';
 
 export default [
   {
     path: '/api/v1/auth/signup',
     handlers: [
-      logger,
       ...userSignupInputValidations,
       checkErrors,
       checkUniqueness,
@@ -64,5 +65,15 @@ export default [
       viewBooking
     ],
     method: 'get'
+  },
+  {
+    path: '/api/v1/bookings/:booking_id',
+    handlers: [
+      passToken,
+      passUserInfo,
+      checkBookingAvailability,
+      deleteBooking
+    ],
+    method: 'delete'
   }
 ];

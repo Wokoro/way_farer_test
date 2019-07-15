@@ -34,7 +34,7 @@ export const createTrip = async (req, res) => {
    * @returns {Object} returns a success message with user data
   */
 export const updateTrip = async (req, res) => {
-  const { tripId } = req.params;
+  const { trip_id } = req.params;
   const tripsStatus = req.body.trip_status;
   
   const updataStatus = tripsStatus === 'cancelled' 
@@ -42,7 +42,7 @@ export const updateTrip = async (req, res) => {
     : 'cancelled';
     
   const [response] = await Trip.updateTrip(
-    'status', updataStatus, 'id', tripId
+    'status', updataStatus, 'id', trip_id
   );
   
   return res.status(200).json({

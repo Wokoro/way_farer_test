@@ -47,6 +47,13 @@ const Booking = {
     RETURNING *`;
     const { rows } = await db.query(query, [updateValue, searchValue]);
     return rows;
+  },
+
+  deleteBooking: async (booking_id) => {
+    const query = 'DELETE FROM bookings WHERE id = $1 RETURNING id';
+   
+    const result = await db.query(query, [booking_id]);
+    return result;
   }
 };
 

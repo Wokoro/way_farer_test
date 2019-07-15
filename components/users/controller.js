@@ -148,3 +148,26 @@ export const viewBooking = async (req, res) => {
     message: 'No booking available'
   });
 };
+
+/**
+ * Function to delete a given booking record
+ * @param {Object} req 
+ * @param {Object} res 
+ * @returns {Object} res delete response
+ */
+export const deleteBooking = async (req, res) => {
+  const { booking_id } = req.params || req.body;
+  const { rows } = await Booking.deleteBooking(booking_id);
+  if (rows.length > 0) {
+    return res.status(200).json({
+      status: 'success',
+      data: {
+        message: 'Booking deleted successfully'
+      }
+    });
+  }
+  return res.status(400).json({
+    status: 'Error',
+    message: 'Unable to delete booking'
+  });
+};

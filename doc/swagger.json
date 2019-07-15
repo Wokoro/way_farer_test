@@ -90,13 +90,6 @@
             "description": ""
           },
           {
-            "name": "is_admin",
-            "in": "formData",
-            "required": true,
-            "type": "boolean",
-            "description": ""
-          },
-          {
             "name": "email",
             "in": "formData",
             "required": true,
@@ -577,14 +570,14 @@
         }
       }
     },
-    "/api/v1/bookings": {
-      "get": {
-        "description": "Enables users view bookings",
-        "summary": "Users booking view",
+    "/api/v1/bookings/{booking_id}": {
+      "delete": {
+        "description": "Enables users delete their bookings",
+        "summary": "Users delete bookings",
         "tags": [
           "User"
         ],
-        "operationId": "BookingsGet",
+        "operationId": "BookingsDelete",
         "deprecated": false,
         "produces": [
           "application/json"
@@ -606,30 +599,28 @@
             "required": true,
             "type": "string",
             "description": ""
+          },
+          {
+            "name": "booking_id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": ""
           }
         ],
         "responses": {
           "200": {
-            "examples": [
-              {
+            "examples": [{
               "status": "success",
-              "data": [
-                {
-                    "id": 3,
-                    "user_id": 2,
-                    "trip_id": 1,
-                    "bus_id": 2,
-                    "trip_date": "2019-02-13T08:00:00.000Z",
-                    "first_name": "douye",
-                    "last_name": "wokoro",
-                    "email": "wokorosam@yahoo.com",
-                    "seat_number": null
+              "data": {
+                "message": "Booking deleted successfully"
                 }
-              ]
               },
               {
                 "status": "success",
-                "message": "No booking available"
+                "data":{
+                  "message": "Booking does not exist for user"
+                }
               }
             ],
             "description": "Success",
@@ -1593,7 +1584,7 @@
         }
       }
     },
-    "/api/v1/trips/{tripId}": {
+    "/api/v1/trips/{trip_id}": {
       "patch": {
         "description": "Enables admin to update trip status to either 'cancelled' or 'active' depending on the current trip status in way_farer_application",
         "summary": "Admin updates trip status to 'cancelled' or 'active'",
@@ -1624,7 +1615,7 @@
             "description": ""
           },
           {
-            "name": "tripId",
+            "name": "trip_id",
             "in": "path",
             "required": true,
             "type": "integer",

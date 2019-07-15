@@ -9,9 +9,9 @@ import Trip from './model';
  * @return {Object} returns error message for error case
  */ 
 export const tripIdValidation = async (req, res, next) => {
-  const tripId = req.params.tripId || req.body.trip_id;
-  if (tripId) {
-    const result = await Trip.getTrip('id', Number(tripId));
+  const trip_id = req.params.trip_id || req.body.trip_id;
+  if (trip_id) {
+    const result = await Trip.getTrip('id', Number(trip_id));
     const [trip] = result;
     if (trip) {
       req.body.trip_status = trip.status;

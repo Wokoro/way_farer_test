@@ -83,6 +83,12 @@ export const createBookingReq = {
   }
 };
 
+export const deleteBookingReq = {
+  params: {
+    booking_id: 1
+  }
+};
+
 export const viewBookingReq = {
   body: {
     user_id: 1,
