@@ -20,31 +20,31 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">6.67% </span>
+        <span class="strong">86.67% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>1/15</span>
+        <span class='fraction'>13/15</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/4</span>
+        <span class='fraction'>2/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/1</span>
+        <span class='fraction'>1/1</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">6.67% </span>
+        <span class="strong">86.67% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>1/15</span>
+        <span class='fraction'>13/15</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -93,23 +93,23 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -129,24 +129,24 @@
  * @param {*} next 
  * @return {Void} returns nothing
  */
-const checkSeatAvailability = <span class="fstat-no" title="function not covered" >as</span>ync (req, res, next) =&gt; {
-  const { trip_id } = <span class="cstat-no" title="statement not covered" >req.body;</span>
-  const [result] = <span class="cstat-no" title="statement not covered" >await Trip.getTrip('id', trip_id);</span>
-  let seatNumber = <span class="cstat-no" title="statement not covered" >req.body.seat_number;</span>
-  const { trip_date, available_seats, bus_id } = <span class="cstat-no" title="statement not covered" >result;</span>
-<span class="cstat-no" title="statement not covered" >  req.body.bus_id = bus_id;</span>
-<span class="cstat-no" title="statement not covered" >  req.body.trip_date = trip_date;</span>
-<span class="cstat-no" title="statement not covered" >  req.body.available_seats = available_seats;</span>
-<span class="cstat-no" title="statement not covered" >  if (seatNumber) {</span>
-<span class="cstat-no" title="statement not covered" >    seatNumber = Number(seatNumber);</span>
+const checkSeatAvailability = async (req, res, next) =&gt; {
+  const { trip_id } = req.body;
+  const [result] = await Trip.getTrip('id', trip_id);
+  let seatNumber = req.body.seat_number;
+  const { trip_date, available_seats, bus_id } = result;
+  req.body.bus_id = bus_id;
+  req.body.trip_date = trip_date;
+  req.body.available_seats = available_seats;
+  <span class="missing-if-branch" title="else path not taken" >E</span>if (seatNumber) {
+    seatNumber = Number(seatNumber);
         
-    const seatTest = <span class="cstat-no" title="statement not covered" >available_seats.includes(Number(seatNumber));</span>
+    const seatTest = available_seats.includes(Number(seatNumber));
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    if (seatTest) {</span>
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (seatTest) {
 <span class="cstat-no" title="statement not covered" >      return next();</span>
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return res.status(400).json({</span>
+    return res.status(400).json({
       status: 'Error',
       errors: `Seat is taken already, 
       available seats: ${result.available_seats}
@@ -163,7 +163,7 @@ export default checkSeatAvailability;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Jul 14 2019 22:20:19 GMT-0700 (Pacific Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Jul 15 2019 01:01:33 GMT-0700 (Pacific Daylight Time)
 </div>
 </div>
 <script src="..\..\prettify.js"></script>
