@@ -11,20 +11,6 @@ const checkSeatAvailability = async (req, res, next) => {
   const { trip_id } = req.body;
   const [result] = await Trip.getTrip('id', trip_id);
   let seatNumber = req.body.seat_number;
-<<<<<<< HEAD
-  
-  if (seatNumber) {
-    seatNumber = Number(seatNumber);
-    
-    const { trip_date, available_seats, bus_id } = result;
-    
-    const seatTest = available_seats.includes(Number(seatNumber));
-    
-    if (seatTest) {
-      req.body.trip_date = trip_date;
-      req.body.available_seats = available_seats;
-      req.body.bus_id = bus_id;
-=======
   const { trip_date, available_seats, bus_id } = result;
   req.body.bus_id = bus_id;
   req.body.trip_date = trip_date;
@@ -35,7 +21,6 @@ const checkSeatAvailability = async (req, res, next) => {
     const seatTest = available_seats.includes(Number(seatNumber));
 
     if (seatTest) {
->>>>>>> ft-create-booking-167279324
       return next();
     }
 

@@ -56,6 +56,11 @@ const bookingTableCreateQuery = `
         id SERIAL PRIMARY KEY UNIQUE,
         user_id INT REFERENCES users (user_id),
         trip_id INT REFERENCES trips (id),
+        bus_id INT NOT NULL,
+        trip_date DATE NOT NULL,
+        first_name VARCHAR(128),
+        last_name VARCHAR(128),
+        email VARCHAR(128),
         seat_number INTEGER
     )`;
 

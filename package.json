@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=develop npm run setupdb && cross-env NODE_ENV=develop nodemon index.js --exec babel-node",
-    "test": "cross-env NODE_ENV=test nyc mocha ./tests/*.test.js --exit",
+    "test": "cross-env NODE_ENV=test nyc mocha ./tests/booking.view.test.js --exit",
     "lint": "eslint --fix ./**/*.js",
     "lint-md": "remark . --output",
     "setupdb": "babel-node database/setupDB.js",
