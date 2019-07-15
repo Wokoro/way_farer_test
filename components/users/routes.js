@@ -10,7 +10,7 @@ import {
   passUserInfo
 } from './validator';
 import {
-  signup, signin, getTrips, createBooking 
+  signup, signin, getTrips, createBooking, viewBooking
 } from './controller';
 
 export default [
@@ -54,5 +54,15 @@ export default [
       createBooking
     ],
     method: 'post'
+  },
+  {
+    path: '/api/v1/bookings',
+    handlers: [
+      passToken,
+      passUserInfo,
+
+      viewBooking
+    ],
+    method: 'get'
   }
 ];
