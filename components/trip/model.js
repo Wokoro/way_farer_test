@@ -9,9 +9,9 @@ import Bus from '../bus/model';
 const Trip = {
   create: async ({ body }) => {
     const {
-      number_plate, origin, destination, trip_date, fare, status, duration 
+      bus_id: passed_Id, origin, destination, trip_date, fare, status, duration 
     } = body;
-    const [bus] = await Bus.getBus('number_plate', number_plate);
+    const [bus] = await Bus.getBus('id', passed_Id);
     const { id: bus_id } = bus;
     const available_seats = [];
     const { capacity } = bus;

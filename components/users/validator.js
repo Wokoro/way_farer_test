@@ -43,6 +43,7 @@ export const userSignupInputValidations = [
 
   check('address', 'Address should be descriptive')
     .isString()
+    .optional()
     .trim()
     .escape(),
 

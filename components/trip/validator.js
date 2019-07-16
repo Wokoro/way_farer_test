@@ -44,7 +44,7 @@ export const checkTripActiveStat = async ({ body }, res, next) => {
  * An array that holds all trip creation input validations
  */
 export const tripCreationValidation = [
-  check('number_plate', 'Trip origin must be present')
+  check('bus_id', 'Trip origin must be present')
     .isString()
     .not().isEmpty()
     .escape()
@@ -89,21 +89,12 @@ export const tripCreationValidation = [
     .exists(),
   
   check('duration', 'Trip duration must be present')
+    .optional()
     .isString()
     .not()
     .isEmpty()
     .escape()
     .trim()
-    .exists()
 ];
-
-// /**
-//  * Function to check if the bus already exists on database
-//  * @param {*} param0 
-//  * @param {*} res 
-//  * @param {*} next 
-//  * @returns {Void} returns nothing
-//  */
-// export const checkUniqueness = async ({ body }, res, next) => {
  
 // };
