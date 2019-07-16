@@ -35,9 +35,9 @@ npm start
 
 ## Usage
 
-WayFarer is hosted on Heroku [here](https://way_farer_api.herokuapp.com/). Click on the link to access WayFarer easily.
+WayFarer is hosted on Heroku [here](https://api-way-farer.herokuapp.com/api/v1/swaggerdocs/). Click on the link to access WayFarer easily.
 
-You can also use Postman to make requests. A sample of [Postman requests](https://documenter.getpostman.com/view/5824922/S1ENyyag#intro) is published online as well. You can take a look at it to see examples of requests made to WayFarer and the responses gotten.
+You can also use Postman to make requests. A sample of [Postman requests](https://web.postman.co/collections/8118230-5ff4eab3-4247-4815-bcbd-48ebf18b5365?version=latest&workspace=6f15fe7e-edc1-4462-837b-07a4805b6556) is published online as well. You can take a look at it to see examples of requests made to WayFarer and the responses gotten.
 
 To use the API, make requests to the endpoints supported by WayFarer and get your responses as JSON objects ready to use in the frontend.
 
