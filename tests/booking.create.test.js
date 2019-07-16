@@ -50,7 +50,7 @@ describe('tests for successful booking creation: POST /bookings', () => {
   });
 
   it('it should return booking id', async () => {
-    expect(apiResponse.data).to.have.property('booking_id');
+    expect(apiResponse.data).to.have.property('id');
   });
   
   it('it should return user id', async () => {

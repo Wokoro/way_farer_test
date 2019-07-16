@@ -9,7 +9,7 @@ import Bus from '../bus/model';
 const Trip = {
   create: async ({ body }) => {
     const {
-      bus_id: passed_Id, origin, destination, trip_date, fare, status, duration 
+      bus_id: passed_Id, origin, destination, trip_date, fare, duration 
     } = body;
     const [bus] = await Bus.getBus('id', passed_Id);
     const { id: bus_id } = bus;
@@ -36,7 +36,7 @@ const Trip = {
       `${destination.charAt(0).toUpperCase() + destination.slice(1)}`, 
       trip_date,
       fare,
-      status,
+      'active',
       duration, 
       available_seats
     ]);

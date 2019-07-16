@@ -83,6 +83,6 @@ describe('tests for no empty booking: GET /bookings', () => {
   });
 
   it('it should return no booking available message', async () => {
-    expect(apiResponse).to.have.property('message');
+    expect(apiResponse).to.have.property('error');
   });
 });

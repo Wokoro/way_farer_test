@@ -49,38 +49,15 @@ export const busCreationValidation = [
  * @returns {Void} returns nothing
  */
 export const checkBusAvailability = async ({ body }, res, next) => {
-  // const { number_plate } = body;
   const { bus_id } = body;
   const [bus] = await Bus.getBus('id', bus_id);
 
-  const buses = await Bus.getBuses();
-  const availableBuses = buses
-    .filter(val => val.available)
-    .map(val => val.number_plate);
-
   if (bus) {
-    const { available } = bus;
-    if (available) {
-      return next();
-    }
-    return res.status(400).json({
-      status: 'Error',
-      error: `$Bus with id = {bus_id},
-       is unavailable, ${availableBuses.length > 0 
-    ? `${availableBuses.length > 1 
-      ? `Available Buses : ${availableBuses}` 
-      : `Available Bus : ${availableBuses}`}`
-    : 'no bus is available'}`
-    });
+    return next();
   }
   return res.status(400).json({
     status: 'Error',
-    error: `$ Bus with id = {bus_id},
-     does not exist, ${availableBuses.length > 0
-    ? `${buses.length > 1
-      ? `Available Buses : ${availableBuses}` 
-      : `Available Bus : ${availableBuses}`}`
-    : 'No bus is created'}`
+    error: 'bus do not exist'
   });
 };
 
