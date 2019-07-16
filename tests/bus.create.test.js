@@ -78,7 +78,7 @@ describe('tests for unsuccessful bus creation: POST /bus', () => {
       expect(res.status).to.have.been.calledWith(400);
     });
     it('it should return error', () => {
-      expect(apiResponse).to.have.property('errors');
+      expect(apiResponse).to.have.property('error');
     });
   });
 });
