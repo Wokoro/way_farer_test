@@ -145,9 +145,9 @@ Sample response
 
 ## Documentation
 
-Documentation for this app is available at: [API docs](https://way_farer_api.herokuapp.com/api-docs)
+Documentation for this app is available at: [API docs](https://api-way-farer.herokuapp.com/api/v1/swaggerdocs/)
 
-You can also find the Postman [collection](https://documenter.getpostman.com/view/5824922/S1ENyyag#intro) to see more examples.
+You can also find the Postman [collection](https://www.getpostman.com/collections/deabbb2d473d3579c001) to see more examples.
 
 ## Tests
 
