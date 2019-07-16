@@ -4,7 +4,7 @@ import sinonChai from 'sinon-chai';
 import { createBooking } from '../components/users/controller';
 import Booking from '../components/booking/model';
 import Trip from '../components/trip/model';
-import seatAvailityCheck from '../components/booking/validation';
+import { checkSeatAvailability } from '../components/booking/validation';
 import { 
   tripIdValidation, 
   checkTripActiveStat 
@@ -137,7 +137,7 @@ describe('tests for already occupied seat: POST /bookings', () => {
     sinon.stub(res, 'status').returnsThis();
     sinon.stub(res, 'json').returnsThis();
     sinon.stub(Trip, 'getTrip').returns(tripGetTripDBResponse);
-    await seatAvailityCheck(checkSeatAvailabilityReq, res, next);
+    await checkSeatAvailability(checkSeatAvailabilityReq, res, next);
     [apiResponse] = res.json.getCall(0).args;
   });
   

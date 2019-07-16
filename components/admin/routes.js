@@ -34,7 +34,7 @@ export default [
     method: 'post',
   },
   {
-    path: '/api/v1/trips/:tripId',
+    path: '/api/v1/trips/:trip_id',
     handlers: [
       passToken,
       checkIfAdmin,
