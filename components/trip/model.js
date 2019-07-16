@@ -40,7 +40,6 @@ const Trip = {
       duration, 
       available_seats
     ]);
-    Bus.update('available', false, 'id', bus_id);
     return rows;
   },
   
