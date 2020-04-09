@@ -81,7 +81,7 @@
     "express-validator": "^6.1.1",
     "faker": "^4.1.0",
     "jsonwebtoken": "^8.5.1",
-    "nodemon": "^1.19.1",
+    "nodemon": "^2.0.3",
     "pg": "^7.11.0",
     "redis": "^2.8.0",
     "remark-cli": "^6.0.1",
