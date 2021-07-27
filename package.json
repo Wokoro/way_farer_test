@@ -87,7 +87,7 @@
     "remark-cli": "^6.0.1",
     "remark-lint": "^6.0.5",
     "remark-preset-lint-recommended": "^3.0.3",
-    "swagger-jsdoc": "^3.2.9",
+    "swagger-jsdoc": "^3.3.0",
     "swagger-ui-express": "^4.0.6",
     "winston": "^3.2.1",
     "snyk": "^1.192.6"
