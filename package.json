@@ -81,7 +81,7 @@
     "express-validator": "^6.1.1",
     "faker": "^4.1.0",
     "jsonwebtoken": "^8.5.1",
-    "nodemon": "^1.19.1",
+    "nodemon": "^2.0.3",
     "pg": "^7.11.0",
     "redis": "^2.8.0",
     "remark-cli": "^6.0.1",
@@ -90,7 +90,7 @@
     "swagger-jsdoc": "^3.2.9",
     "swagger-ui-express": "^4.0.6",
     "winston": "^3.2.1",
-    "snyk": "^1.192.6"
+    "snyk": "^1.290.1"
   },
   "snyk": true
 }
