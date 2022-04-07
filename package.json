@@ -89,7 +89,7 @@
     "remark-preset-lint-recommended": "^3.0.3",
     "swagger-jsdoc": "^3.2.9",
     "swagger-ui-express": "^4.0.6",
-    "winston": "^3.2.1",
+    "winston": "^3.3.0",
     "snyk": "^1.192.6"
   },
   "snyk": true
