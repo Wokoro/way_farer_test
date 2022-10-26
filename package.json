@@ -12,7 +12,7 @@
     "dropdb": "cross-env NODE_ENV=production babel-node ./database/dropDB.js",
     "seedDb": "babel-node ./database/seedDB.js",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "snyk-protect": "snyk protect",
+    "snyk-protect": "snyk-protect",
     "prepare": "npm run snyk-protect"
   },
   "remarkConfig": {
@@ -90,7 +90,7 @@
     "swagger-jsdoc": "^3.2.9",
     "swagger-ui-express": "^4.0.6",
     "winston": "^3.2.1",
-    "snyk": "^1.192.6"
+    "@snyk/protect": "latest"
   },
   "snyk": true
 }
