@@ -64,14 +64,14 @@
     "coveralls": "^3.0.4"
   },
   "dependencies": {
-    "@babel/cli": "^7.5.0",
+    "@babel/cli": "^7.12.0",
     "@babel/core": "^7.4.5",
     "@babel/node": "^7.4.5",
     "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
     "@babel/register": "^7.4.4",
     "@babel/runtime": "^7.5.0",
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
@@ -81,16 +81,16 @@
     "express-validator": "^6.1.1",
     "faker": "^4.1.0",
     "jsonwebtoken": "^8.5.1",
-    "nodemon": "^1.19.1",
+    "nodemon": "^2.0.0",
     "pg": "^7.11.0",
     "redis": "^2.8.0",
-    "remark-cli": "^6.0.1",
+    "remark-cli": "^7.0.0",
     "remark-lint": "^6.0.5",
     "remark-preset-lint-recommended": "^3.0.3",
-    "swagger-jsdoc": "^3.2.9",
+    "swagger-jsdoc": "^3.6.0",
     "swagger-ui-express": "^4.0.6",
     "winston": "^3.2.1",
-    "snyk": "^1.192.6"
+    "snyk": "^1.996.0"
   },
   "snyk": true
 }
